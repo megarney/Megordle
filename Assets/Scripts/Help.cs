@@ -12,13 +12,6 @@ using UnityEngine.SceneManagement;
 
 public class Help : MonoBehaviour
 {
-    /*
-     * Allows music to continue playing in all of the Help scenes
-     */
-    public void Awake()
-    {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().PlayMusic();
-    }
 
     /*
      * Keeps track of which scene the user came from so they can return to that scene when they are done

@@ -12,32 +12,37 @@ using UnityEngine.Audio;
 
 public class Music : MonoBehaviour
 {
-    [SerializeField] private AudioSource backgroundMusic;
+    public static Music Instance;
 
-    /*
-     * Starts the music when the player first opens up the game
-     */
-    private void Awake()
+    [SerializeField] private AudioSource _musicSource;
+
+    void Awake()
     {
-        Music[] objects = FindObjectsOfType<Music>();
-
-        if (objects.Length > 1)
+        if(Instance == null)
         {
-            Destroy(objects[1].gameObject);
-            return;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        DontDestroyOnLoad(transform.gameObject);
-        backgroundMusic = GetComponent<AudioSource>();
+        else
+        {
+            Destroy(gameObject);
+        }
+        if(PlayerPrefs.GetString("MusicPref").Equals("Off") && !_musicSource.mute)
+        {
+            ToggleMusic();
+        }
     }
 
-    /*
-     * Called by different scenes so that music can continue
-     * DOESN'T ACTUALLY DO ANYTHING
-     * TODO: Change so that the scenes will only play music if the user's preferences are set for that
-     */
-    public void PlayMusic()
+    public void ToggleMusic()
     {
-        if (backgroundMusic.isPlaying) return;
-        backgroundMusic.Play();
+        _musicSource.mute = !_musicSource.mute;
+        if(_musicSource.mute)
+        {
+            PlayerPrefs.SetString("MusicPref", "Off");
+        }
+        else
+        {
+            PlayerPrefs.SetString("MusicPref", "On");
+        }
     }
 }

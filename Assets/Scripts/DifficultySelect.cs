@@ -12,13 +12,6 @@ using UnityEngine.SceneManagement;
 
 public class DifficultySelect : MonoBehaviour
 {
-    /*
-     * Allows the music to continue playing in the Difficulty Select scene
-     */
-    public void Awake()
-    {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().PlayMusic();
-    }
 
     /*
      * Method for the return button

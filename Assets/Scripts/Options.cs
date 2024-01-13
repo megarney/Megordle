@@ -34,6 +34,49 @@ public class Options : MonoBehaviour
     [SerializeField] private Button soundEffectsBtn;
 
     /*
+     * Allows for the sprites to stay in their on or off stages when Options is closed
+     */
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("soundEffectsPref"))
+        {
+            if (PlayerPrefs.GetString("soundEffectsPref").Equals("On"))
+            {
+                soundEffectsBtn.image.sprite = soundEffectsOn;
+                PlayerPrefs.SetString("soundEffectsPref", "On");
+            }
+            else
+            {
+                soundEffectsBtn.image.sprite = soundEffectsOff;
+                PlayerPrefs.SetString("soundEffectsPref", "Off");
+            }
+        }
+        else
+        {
+            soundEffectsBtn.image.sprite = soundEffectsOn;
+            PlayerPrefs.SetString("soundEffectsPref", "On");
+        }
+        if (PlayerPrefs.HasKey("MusicPref"))
+        {
+            if (PlayerPrefs.GetString("MusicPref").Equals("On"))
+            {
+                MusicBtn.image.sprite = MusicOn;
+                PlayerPrefs.SetString("MusicPref", "On");
+            }
+            else
+            {
+                MusicBtn.image.sprite = MusicOff;
+                PlayerPrefs.SetString("MusicPref", "Off");
+            }
+        }
+        else
+        {
+            MusicBtn.image.sprite = MusicOn;
+            PlayerPrefs.SetString("MusicPref", "On");
+        }
+    }
+
+    /*
      * Toggles the sound effects sprite;
      */
     public void toggleSoundEffects()
@@ -85,49 +128,6 @@ public class Options : MonoBehaviour
         {
             MusicBtn.image.sprite = MusicOff;
             PlayerPrefs.SetString("MusicPref", "Off");
-        }
-    }
-
-    /*
-     * Allows for the sprites to stay in their on or off stages when Options is closed
-     */
-    private void Awake()
-    {
-        if (PlayerPrefs.HasKey("soundEffectsPref"))
-        {
-            if (PlayerPrefs.GetString("soundEffectsPref").Equals("On"))
-            {
-                soundEffectsBtn.image.sprite = soundEffectsOn;
-                PlayerPrefs.SetString("soundEffectsPref", "On");
-            }
-            else
-            {
-                soundEffectsBtn.image.sprite = soundEffectsOff;
-                PlayerPrefs.SetString("soundEffectsPref", "Off");
-            }
-        }
-        else
-        {
-            soundEffectsBtn.image.sprite = soundEffectsOn;
-            PlayerPrefs.SetString("soundEffectsPref", "On");
-        }
-        if (PlayerPrefs.HasKey("MusicPref"))
-        {
-            if (PlayerPrefs.GetString("MusicPref").Equals("On"))
-            {
-                MusicBtn.image.sprite = MusicOn;
-                PlayerPrefs.SetString("MusicPref", "On");
-            }
-            else
-            {
-                MusicBtn.image.sprite = MusicOff;
-                PlayerPrefs.SetString("MusicPref", "Off");
-            }
-        }
-        else
-        {
-            MusicBtn.image.sprite = MusicOn;
-            PlayerPrefs.SetString("MusicPref", "On");
         }
     }
 }

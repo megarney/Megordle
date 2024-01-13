@@ -29,7 +29,6 @@ public class LevelSelect : MonoBehaviour
      */
     public void Awake()
     {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().PlayMusic();
 
         int fiveAvailable = UsedWords.getFiveAvailable();
         int eightAvailable = UsedWords.getEightAvailable();

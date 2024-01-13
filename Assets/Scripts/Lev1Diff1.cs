@@ -173,15 +173,6 @@ public class Lev1Diff1 : MonoBehaviour
     }
 
     /*
-     * Allows the music to continue playing during this scene
-     */
-    private void Awake()
-    {
-        Debug.Log("Awake");
-        GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().PlayMusic();
-    }
-
-    /*
      * Methods for each of the Megordle buttons
      * When a button is clicked,
      * if not all of the guess texts are filled

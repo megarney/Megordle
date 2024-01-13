@@ -17,14 +17,6 @@ using System.IO;
 public class MainMenu : MonoBehaviour
 {
 
-    /*
-     * Allows the music to continue playing during this scene
-     */
-    public void Awake()
-    {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().PlayMusic();
-    }
-
     [SerializeField] private TextMeshProUGUI megashText;
 
     /*
