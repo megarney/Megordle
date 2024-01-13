@@ -31,8 +31,8 @@ public class UsedWords : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("FiveAvailable", 5);
-            return 5;
+            PlayerPrefs.SetInt("FiveAvailable", 686);
+            return 686;
         }
     }
 

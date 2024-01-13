@@ -151,7 +151,7 @@ public class Lev1Diff1 : MonoBehaviour
             contWordle();
         }
 
-        if(Megash.getTotalCash() < 20)
+        if(Megash.getTotalCash() < 50)
         {
             hintBtn.enabled = false;
         }
@@ -159,6 +159,16 @@ public class Lev1Diff1 : MonoBehaviour
         {
             hintBtn.enabled = true;
             hintBtn.onClick.AddListener(hint);
+        }
+
+        if (Megash.getTotalCash() < 500)
+        {
+            autoWinBtn.enabled = false;
+        }
+        else
+        {
+            autoWinBtn.enabled = true;
+            autoWinBtn.onClick.AddListener(autoWin);
         }
     }
 
@@ -584,10 +594,10 @@ public class Lev1Diff1 : MonoBehaviour
 
     public void hint()
     {
-        Megash.spend(20);
+        Megash.spend(50);
         megashText.text = Megash.getTotalCash().ToString();
 
-        if(Megash.getTotalCash() < 20)
+        if(Megash.getTotalCash() < 50)
         {
             hintBtn.enabled = false;
         }
@@ -635,6 +645,12 @@ public class Lev1Diff1 : MonoBehaviour
         char[] guessarr = guess.ToCharArray();
         guessarr[hintIndex] = letter[0];
         guess = new string(guessarr);
+    }
+
+    public void autoWin()
+    {
+        Megash.spend(500);
+        SceneManager.LoadSceneAsync("AutoWin");
     }
 
 }

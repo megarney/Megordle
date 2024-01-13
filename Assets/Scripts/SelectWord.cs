@@ -25,7 +25,7 @@ public class SelectWord : MonoBehaviour
         int n = 0;
         if(level == 1)
         {
-            n = rand.Next(0, 5);
+            n = rand.Next(0, 686);
         }
         else if(level == 2)
         {
@@ -39,7 +39,7 @@ public class SelectWord : MonoBehaviour
         string filename = "Assets/Database/demoFiveLetters.txt";
         if(level == 1)
         {
-            filename = "Assets/Database/demoFiveLetters.txt";
+            filename = "Assets/Database/fiveLetterWords.txt";
         }
         if(level == 2)
         {

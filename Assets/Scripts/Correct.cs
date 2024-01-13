@@ -34,7 +34,7 @@ public class Correct : MonoBehaviour
         megashTotalText.text = PlayerPrefs.GetInt("Megash").ToString();
         streakText.text = PlayerPrefs.GetInt("Streak").ToString();
         streakMultiplierText.text = "+" + (Streak.streakMultiplier() - 10).ToString() + " points";
-
+        
         int level = Game.GetLevel();
         if (level == 1)
         {
