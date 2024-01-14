@@ -23,6 +23,11 @@ public class Points : MonoBehaviour
         totalPoints = 100 + Streak.streakMultiplier() + getDifMult() + getLevMult();
     }
 
+    public static void setPoints(int points)
+    {
+        totalPoints = points;
+    }
+
     public static int getPoints()
     {
         if(totalPoints >= 0)

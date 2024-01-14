@@ -97,12 +97,12 @@ public class DifficultySelect : MonoBehaviour
         SelectWord.extraLetters(3);
         Game.Scramble();
         Points.points();
-        SceneManager.LoadSceneAsync("");
 
         int level = Game.GetLevel();
         if (level == 1)
         {
-
+            PlayerPrefs.SetInt("LevelOneDiff", 3);
+            SceneManager.LoadSceneAsync("Lev1Diff3");
         }
         else if (level == 2)
         {

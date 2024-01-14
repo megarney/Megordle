@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Lev1Diff2 : MonoBehaviour
+public class Lev1Diff3 : MonoBehaviour
 {
     static string scrambled;
     string filled; //shows '0's if there is no letter in that index in the player's guess and '1's if there is a letter (sh_w_ => 11010)
@@ -30,6 +30,7 @@ public class Lev1Diff2 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI FourthLetterText;
     [SerializeField] private TextMeshProUGUI FifthLetterText;
     [SerializeField] private TextMeshProUGUI SixthLetterText;
+    [SerializeField] private TextMeshProUGUI SeventhLetterText;
 
     //Controls the buttons
     [SerializeField] private Button FirstLetterBtn;
@@ -38,6 +39,7 @@ public class Lev1Diff2 : MonoBehaviour
     [SerializeField] private Button FourthLetterBtn;
     [SerializeField] private Button FifthLetterBtn;
     [SerializeField] private Button SixthLetterBtn;
+    [SerializeField] private Button SeventhLetterBtn;
 
     //Controls the user's attempts/hearts
     [SerializeField] private Image attemptOne;
@@ -55,14 +57,14 @@ public class Lev1Diff2 : MonoBehaviour
     {
         PlayerPrefs.SetString("LevelOneAnswer", Game.GetAnswer());
         PlayerPrefs.SetString("LevelOneWordle", wordle);
-        PlayerPrefs.SetInt("LevelOneDiff", 2);
+        PlayerPrefs.SetInt("LevelOneDiff", 3);
         PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
         PlayerPrefs.SetString("LevelOneScrambled", scrambled);
         PlayerPrefs.SetInt("LevelOnePoints", Points.getPoints());
 
         PlayerPrefs.SetInt("LevelOne", 1);
 
-        Help.SetScene("Lev1Diff2");
+        Help.SetScene("Lev1Diff3");
         SceneManager.LoadSceneAsync("Help");
     }
 
@@ -73,7 +75,7 @@ public class Lev1Diff2 : MonoBehaviour
     {
         PlayerPrefs.SetString("LevelOneAnswer", Game.GetAnswer());
         PlayerPrefs.SetString("LevelOneWordle", wordle);
-        PlayerPrefs.SetInt("LevelOneDiff", 2);
+        PlayerPrefs.SetInt("LevelOneDiff", 3);
         PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
         PlayerPrefs.SetString("LevelOneScrambled", scrambled);
         PlayerPrefs.SetInt("LevelOnePoints", Points.getPoints());
@@ -117,13 +119,15 @@ public class Lev1Diff2 : MonoBehaviour
         FourthLetterBtn.onClick.AddListener(FourthLetterBtnOnclick);
         FifthLetterBtn.onClick.AddListener(FifthLetterBtnOnclick);
         SixthLetterBtn.onClick.AddListener(SixthLetterBtnOnclick);
+        SeventhLetterBtn.onClick.AddListener(SeventhLetterBtnOnclick);
 
         FirstLetterText.text = scrambled.Substring(0, 1);
         SecondLetterText.text = scrambled.Substring(1, 1);
         ThirdLetterText.text = scrambled.Substring(2, 1);
         FourthLetterText.text = scrambled.Substring(3, 1);
-        FifthLetterText.text = scrambled.Substring(4,1);
-        SixthLetterText.text = scrambled.Substring(5);
+        FifthLetterText.text = scrambled.Substring(4, 1);
+        SixthLetterText.text = scrambled.Substring(5, 1);
+        SeventhLetterText.text = scrambled.Substring(6);
 
 
         if (PlayerPrefs.GetInt("LevelOne") == 1)
@@ -223,6 +227,15 @@ public class Lev1Diff2 : MonoBehaviour
         {
             addLetter(SixthLetterText.text);
             SixthLetterBtn.interactable = false;
+        }
+    }
+
+    public void SeventhLetterBtnOnclick()
+    {
+        if (!filled.Equals("11111"))
+        {
+            addLetter(SeventhLetterText.text);
+            SeventhLetterBtn.interactable = false;
         }
     }
 
@@ -489,6 +502,10 @@ public class Lev1Diff2 : MonoBehaviour
         {
             SixthLetterBtn.interactable = true;
         }
+        else if (letter.Equals(SeventhLetterText.text) && SeventhLetterBtn.interactable == false)
+        {
+            SeventhLetterBtn.interactable = true;
+        }
     }
 
     public void contWordle()
@@ -559,6 +576,10 @@ public class Lev1Diff2 : MonoBehaviour
         else if (letter.Equals(SixthLetterText.text) && SixthLetterBtn.interactable == true)
         {
             SixthLetterBtn.interactable = false;
+        }
+        else if (letter.Equals(SeventhLetterText.text) && SeventhLetterBtn.interactable == true)
+        {
+            SeventhLetterBtn.interactable = false;
         }
     }
 

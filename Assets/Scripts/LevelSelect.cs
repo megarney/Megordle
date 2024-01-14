@@ -117,6 +117,7 @@ public class LevelSelect : MonoBehaviour
         Attempt.SetAttempts(PlayerPrefs.GetInt("LevelOneAttempts"));
         Game.SetWordle(PlayerPrefs.GetString("LevelOneWordle"));
         Game.SetScrambled(PlayerPrefs.GetString("LevelOneScrambled"));
+        Points.setPoints(PlayerPrefs.GetInt("LevelOnePoints"));
         int difficulty = PlayerPrefs.GetInt("LevelOneDiff");
         if (difficulty == 1)
         {
@@ -125,6 +126,10 @@ public class LevelSelect : MonoBehaviour
         else if(difficulty == 2)
         {
             SceneManager.LoadSceneAsync("Lev1Diff2");
+        }
+        else if (difficulty == 3)
+        {
+            SceneManager.LoadSceneAsync("Lev1Diff3");
         }
     }
 

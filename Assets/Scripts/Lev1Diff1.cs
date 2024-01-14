@@ -61,12 +61,12 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void toHelp()
     {
-        Debug.Log("Help");
         PlayerPrefs.SetString("LevelOneAnswer", AnswerText.text);
         PlayerPrefs.SetString("LevelOneWordle", wordle);
         PlayerPrefs.SetInt("LevelOneDiff", 1);
         PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
         PlayerPrefs.SetString("LevelOneScrambled", scrambled);
+        PlayerPrefs.SetInt("LevelOnePoints", Points.getPoints());
 
         PlayerPrefs.SetInt("LevelOne", 1);
 
@@ -79,12 +79,12 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void toMain()
     {
-        Debug.Log("Main");
         PlayerPrefs.SetString("LevelOneAnswer", AnswerText.text);
         PlayerPrefs.SetString("LevelOneWordle", wordle);
         PlayerPrefs.SetInt("LevelOneDiff", 1);
         PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
         PlayerPrefs.SetString("LevelOneScrambled", scrambled);
+        PlayerPrefs.SetInt("LevelOnePoints", Points.getPoints());
 
         PlayerPrefs.SetInt("LevelOne", 1);
 
@@ -104,7 +104,6 @@ public class Lev1Diff1 : MonoBehaviour
      */
     void Start()
     {
-        Debug.Log("Start");
         UsedWords.saveList();
 
         megashText.text = Megash.getTotalCash().ToString();
@@ -181,7 +180,6 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void FirstLetterBtnOnclick()
     {
-        Debug.Log("1st Button");
         if (!filled.Equals("11111"))
         {
             addLetter(FirstLetterText.text);
@@ -191,7 +189,6 @@ public class Lev1Diff1 : MonoBehaviour
 
     public void SecondLetterBtnOnclick()
     {
-        Debug.Log("2nd Button");
         if (!filled.Equals("11111"))
         {
             addLetter(SecondLetterText.text);
@@ -201,7 +198,6 @@ public class Lev1Diff1 : MonoBehaviour
 
     public void ThirdLetterBtnOnclick()
     {
-        Debug.Log("3rd Button");
         if (!filled.Equals("11111"))
         {
             addLetter(ThirdLetterText.text);
@@ -211,7 +207,6 @@ public class Lev1Diff1 : MonoBehaviour
 
     public void FourthLetterBtnOnclick()
     {
-        Debug.Log("4th Button");
         if (!filled.Equals("11111"))
         {
             addLetter(FourthLetterText.text);
@@ -221,7 +216,6 @@ public class Lev1Diff1 : MonoBehaviour
 
     public void FifthLetterBtnOnclick()
     {
-        Debug.Log("5th Button");
         if (!filled.Equals("11111"))
         {
             addLetter(FifthLetterText.text);
@@ -235,7 +229,6 @@ public class Lev1Diff1 : MonoBehaviour
      */
     private void addLetter(string letter)
     {
-        Debug.Log("add letter");
         int ind = 0;
         foreach(char spot in filled)
         {
@@ -281,7 +274,6 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void DeleteBtnOnclick()
     {
-        Debug.Log("delete");
         if (!filled.Equals("00000"))
         {
             int ind = 0;
@@ -310,7 +302,6 @@ public class Lev1Diff1 : MonoBehaviour
      */
     private void removeLetter(int index)
     {
-        Debug.Log("remove");
         if (index == 0)
         {
             EnableButton(FirstLetterGuess.text);
@@ -350,7 +341,6 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void GuessBtnOnclick()
     {
-        Debug.Log("guess");
         if (guess.Equals(Game.GetAnswer()))
         {
             Streak.increaseStreak();
@@ -367,7 +357,6 @@ public class Lev1Diff1 : MonoBehaviour
 
     private void DisableText()
     {
-        Debug.Log("disable");
         IncorrectText.enabled = false;
     }
 
@@ -383,7 +372,6 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void failedAttempt()
     {
-        Debug.Log("fail");
         Points.failedAttempt();
         int attempts = Attempt.failedAttempt();
         if (attempts == 0 && PlayerPrefs.GetInt("Megash") >= 50)
@@ -423,7 +411,6 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void doWordle()
     {
-        Debug.Log("dowordle");
         wordle = Game.checkCorrect(guess);
         int ind = 0;
         filled = "";
@@ -474,7 +461,6 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void EnableButton(string letter)
     {
-        Debug.Log("enable");
         if (letter.Equals(FirstLetterText.text) && FirstLetterBtn.interactable == false)
         {
             FirstLetterBtn.interactable = true;
@@ -499,7 +485,6 @@ public class Lev1Diff1 : MonoBehaviour
 
     public void contWordle()
     {
-        Debug.Log("contwordle");
         string answer = Game.GetAnswer();
         int ind = 0;
         filled = "";
@@ -543,30 +528,24 @@ public class Lev1Diff1 : MonoBehaviour
 
     public void DisableButton(string letter)
     {
-        //Debug.Log("disable");
         if (letter.Equals(FirstLetterText.text) && FirstLetterBtn.interactable == true)
         {
-            Debug.Log("disabled first");
             FirstLetterBtn.interactable = false;
         }
         else if (letter.Equals(SecondLetterText.text) && SecondLetterBtn.interactable == true)
         {
-            Debug.Log("disabled second");
             SecondLetterBtn.interactable = false;
         }
         else if (letter.Equals(ThirdLetterText.text) && ThirdLetterBtn.interactable == true)
         {
-            Debug.Log("disabled third");
             ThirdLetterBtn.interactable = false;
         }
         else if (letter.Equals(FourthLetterText.text) && FourthLetterBtn.interactable == true)
         {
-            Debug.Log("disabled fourth");
             FourthLetterBtn.interactable = false;
         }
         else if (letter.Equals(FifthLetterText.text) && FifthLetterBtn.interactable == true)
         {
-            Debug.Log("disabled fifth");
             FifthLetterBtn.interactable = false;
         }
     }
@@ -581,7 +560,6 @@ public class Lev1Diff1 : MonoBehaviour
             hintBtn.enabled = false;
         }
 
-        Debug.Log("hint");
         if (wordle == null)
         {
             wordle = Hint.hint("_____");
