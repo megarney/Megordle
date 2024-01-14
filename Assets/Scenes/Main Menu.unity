@@ -267,7 +267,6 @@ GameObject:
   m_Component:
   - component: {fileID: 313721109}
   - component: {fileID: 313721110}
-  - component: {fileID: 313721111}
   m_Layer: 0
   m_Name: BackgroundMusic
   m_TagString: Music
@@ -305,20 +304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 1459460688}
-  _effectSource: {fileID: 1802192570}
---- !u!114 &313721111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313721107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2c28eb47702a7947826788bfc8852a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 8072091bfa627d4489d887c3225c564b, type: 3}
 --- !u!1 &315332353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,21 +1063,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 313721111}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlaySoundOnStart, Assembly-CSharp
         m_MethodName: onClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1770708083}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Options
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

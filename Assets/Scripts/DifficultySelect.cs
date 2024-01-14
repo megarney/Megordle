@@ -55,11 +55,12 @@ public class DifficultySelect : MonoBehaviour
         int level = Game.GetLevel();
         if(level == 1)
         {
+            PlayerPrefs.SetInt("LevelOneDiff", 1);
             SceneManager.LoadSceneAsync("Lev1Diff1");
         }
         else if(level == 2)
         {
-
+            
         }
         else if(level == 3)
         {
@@ -73,12 +74,12 @@ public class DifficultySelect : MonoBehaviour
         SelectWord.extraLetters(2);
         Game.Scramble();
         Points.points();
-        SceneManager.LoadSceneAsync("");
 
         int level = Game.GetLevel();
         if (level == 1)
         {
-            
+            PlayerPrefs.SetInt("LevelOneDiff", 2);
+            SceneManager.LoadSceneAsync("Lev1Diff2");
         }
         else if (level == 2)
         {

@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Help.unity
     guid: 86b1fe671ae3d6749bdec86866bfbae7
   - enabled: 1
-    path: Assets/Scenes/Lev1Diff1.unity
+    path: Assets/Scenes/Level1/Lev1Diff1.unity
     guid: bdf14dd4ef1513d45873df8508e86df6
   - enabled: 1
     path: Assets/Scenes/HelpTabs/GuessingHelp.unity
@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AutoWin.unity
     guid: b336068c14c0101439cdfb92fcb4bec5
+  - enabled: 1
+    path: Assets/Scenes/Level1/Lev1Diff2.unity
+    guid: 82c13c2be49a30a418140b455255e7ca
   m_configObjects: {}

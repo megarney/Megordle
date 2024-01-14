@@ -122,6 +122,10 @@ public class LevelSelect : MonoBehaviour
         {
             SceneManager.LoadSceneAsync("Lev1Diff1");
         }
+        else if(difficulty == 2)
+        {
+            SceneManager.LoadSceneAsync("Lev1Diff2");
+        }
     }
 
     public static void LevelTwo()
