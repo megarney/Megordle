@@ -77,7 +77,18 @@ public class SelectWord : MonoBehaviour
         }
         else
         {
-            UsedWords.fiveUsed();
+            if (level == 1)
+            {
+                UsedWords.fiveUsed();
+            }
+            if (level == 2)
+            {
+                UsedWords.eightUsed();
+            }
+            if (level == 3)
+            {
+                UsedWords.twelveUsed();
+            }
             Game.SetAnswer(answer);
         }
     }

@@ -50,21 +50,31 @@ public class LevelSelect : MonoBehaviour
 
         if (PlayerPrefs.GetInt("LevelTwo") == 1)
         {
-            continueLevelTwo();
+            levelTwoText.text = "Continue";
+            levelTwoButton.onClick.AddListener(continueLevelTwo);
         }
         else if (eightAvailable == 0)
         {
             outOfLevelTwo();
         }
+        else
+        {
+            levelTwoButton.onClick.AddListener(LevelTwo);
+        }
 
         if (PlayerPrefs.GetInt("LevelThree") == 1)
         {
-            continueLevelThree();
+            levelThreeText.text = "Continue";
+            levelThreeButton.onClick.AddListener(continueLevelThree);
         }
-        else if(twelveAvailable == 0)
+        else if (twelveAvailable == 0)
         {
             outOfLevelThree();
-        }        
+        }
+        else
+        {
+            levelThreeButton.onClick.AddListener(LevelThree);
+        }
     }
 
     /*
@@ -150,7 +160,25 @@ public class LevelSelect : MonoBehaviour
 
     public void continueLevelTwo()
     {
-
+        Game.SetLevel(2);
+        Game.SetAnswer(PlayerPrefs.GetString("LevelTwoAnswer"));
+        Attempt.SetAttempts(PlayerPrefs.GetInt("LevelTwoAttempts"));
+        Game.SetWordle(PlayerPrefs.GetString("LevelTwoWordle"));
+        Game.SetScrambled(PlayerPrefs.GetString("LevelTwoScrambled"));
+        Points.setPoints(PlayerPrefs.GetInt("LevelTwoPoints"));
+        int difficulty = PlayerPrefs.GetInt("LevelTwoDiff");
+        if (difficulty == 1)
+        {
+            SceneManager.LoadSceneAsync("Lev2Diff1");
+        }
+        else if (difficulty == 2)
+        {
+            SceneManager.LoadSceneAsync("Lev2Diff2");
+        }
+        else if (difficulty == 3)
+        {
+            SceneManager.LoadSceneAsync("Lev2Diff3");
+        }
     }
 
     public static void LevelThree()
@@ -170,7 +198,25 @@ public class LevelSelect : MonoBehaviour
 
     public void continueLevelThree()
     {
-
+        Game.SetLevel(3);
+        Game.SetAnswer(PlayerPrefs.GetString("LevelThreeAnswer"));
+        Attempt.SetAttempts(PlayerPrefs.GetInt("LevelThreeAttempts"));
+        Game.SetWordle(PlayerPrefs.GetString("LevelThreeWordle"));
+        Game.SetScrambled(PlayerPrefs.GetString("LevelThreeScrambled"));
+        Points.setPoints(PlayerPrefs.GetInt("LevelThreePoints"));
+        int difficulty = PlayerPrefs.GetInt("LevelThreeDiff");
+        if (difficulty == 1)
+        {
+            SceneManager.LoadSceneAsync("Lev3Diff1");
+        }
+        else if (difficulty == 2)
+        {
+            SceneManager.LoadSceneAsync("Lev3Diff2");
+        }
+        else if (difficulty == 3)
+        {
+            SceneManager.LoadSceneAsync("Lev3Diff3");
+        }
     }
 
 }

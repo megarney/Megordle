@@ -13,8 +13,6 @@ using System.IO;
 public class UsedWords : MonoBehaviour
 {
     private static List<string> usedWords = new List<string>();
-    private static int eightAvailable = 504; //keeps track of the amount of words left in the eight letter words database
-    private static int twelveAvailable = 71; //keeps track of the amount of words left in the twelve letter words database
 
     private static bool dataLoaded = false;
 
@@ -43,29 +41,45 @@ public class UsedWords : MonoBehaviour
 
     public static int getEightAvailable()
     {
-        return eightAvailable;
+        if (PlayerPrefs.HasKey("EightAvailable"))
+        {
+            return PlayerPrefs.GetInt("EightAvailable");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("EightAvailable", 5);
+            return 5;
+        }
     }
 
     public static void eightUsed()
     {
-        eightAvailable--;
+        PlayerPrefs.SetInt("EightAvailable", PlayerPrefs.GetInt("EightAvailable") - 1);
     }
 
     public static int getTwelveAvailable()
     {
-        return twelveAvailable;
+        if (PlayerPrefs.HasKey("TwelveAvailable"))
+        {
+            return PlayerPrefs.GetInt("TwelveAvailable");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("TwelveAvailable", 5);
+            return 5;
+        }
     }
 
     public static void twelveUsed()
     {
-        twelveAvailable--;
+        PlayerPrefs.SetInt("TwelveAvailable", PlayerPrefs.GetInt("TwelveAvailable") - 1);
     }
 
     public static void setDemo()
     {
         PlayerPrefs.SetInt("FiveAvailable", 5);
-        eightAvailable = 5;
-        twelveAvailable = 5;
+        PlayerPrefs.SetInt("EightAvailable", 5);
+        PlayerPrefs.SetInt("TwelveAvailable", 5);
     }
 
     public static void reset()

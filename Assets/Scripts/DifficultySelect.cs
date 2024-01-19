@@ -60,11 +60,13 @@ public class DifficultySelect : MonoBehaviour
         }
         else if(level == 2)
         {
-            
+            PlayerPrefs.SetInt("LevelTwoDiff", 1);
+            SceneManager.LoadSceneAsync("Lev2Diff1");
         }
         else if(level == 3)
         {
-
+            PlayerPrefs.SetInt("LevelThreeDiff", 1);
+            SceneManager.LoadSceneAsync("Lev3Diff1");
         }
     }
 
@@ -83,11 +85,13 @@ public class DifficultySelect : MonoBehaviour
         }
         else if (level == 2)
         {
-
+            PlayerPrefs.SetInt("LevelTwoDiff", 2);
+            SceneManager.LoadSceneAsync("Lev2Diff2");
         }
         else if (level == 3)
         {
-
+            PlayerPrefs.SetInt("LevelThreeDiff", 2);
+            SceneManager.LoadSceneAsync("Lev3Diff2");
         }
     }
 
@@ -106,11 +110,13 @@ public class DifficultySelect : MonoBehaviour
         }
         else if (level == 2)
         {
-
+            PlayerPrefs.SetInt("LevelTwoDiff", 3);
+            SceneManager.LoadSceneAsync("Lev2Diff3");
         }
         else if (level == 3)
         {
-
+            PlayerPrefs.SetInt("LevelThreeDiff", 3);
+            SceneManager.LoadSceneAsync("Lev3Diff3");
         }
     }
 }
