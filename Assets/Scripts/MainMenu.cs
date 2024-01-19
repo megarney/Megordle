@@ -39,8 +39,9 @@ public class MainMenu : MonoBehaviour
     /*
      * Method for the help button
      */
-    public void Help()
+    public void toHelp()
     {
+        Help.SetScene("Main Menu");
         SceneManager.LoadSceneAsync("Help");
     }
 

@@ -26,6 +26,8 @@ public class Lev1Diff1 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI AnswerText;
     [SerializeField] private TextMeshProUGUI IncorrectText;
 
+    [SerializeField] private TextMeshProUGUI PreviousGuessesText;
+
     //Controls the text that contains the player's guess
     [SerializeField] private TextMeshProUGUI FirstLetterGuess;
     [SerializeField] private TextMeshProUGUI SecondLetterGuess;
@@ -67,6 +69,7 @@ public class Lev1Diff1 : MonoBehaviour
         PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
         PlayerPrefs.SetString("LevelOneScrambled", scrambled);
         PlayerPrefs.SetInt("LevelOnePoints", Points.getPoints());
+        PlayerPrefs.SetString("LevelOneGuesses", PreviousGuessesText.text);
 
         PlayerPrefs.SetInt("LevelOne", 1);
 
@@ -85,6 +88,7 @@ public class Lev1Diff1 : MonoBehaviour
         PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
         PlayerPrefs.SetString("LevelOneScrambled", scrambled);
         PlayerPrefs.SetInt("LevelOnePoints", Points.getPoints());
+        PlayerPrefs.SetString("LevelOneGuesses", PreviousGuessesText.text);
 
         PlayerPrefs.SetInt("LevelOne", 1);
 
@@ -148,6 +152,15 @@ public class Lev1Diff1 : MonoBehaviour
             }
             wordle = PlayerPrefs.GetString("LevelOneWordle");
             contWordle();
+
+            if (!PlayerPrefs.GetString("LevelOneGuesses").Equals(""))
+            {
+                PreviousGuessesText.text = PlayerPrefs.GetString("LevelOneGuesses");
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetString("LevelOneGuesses", "");
         }
 
         if(Megash.getTotalCash() < 50)
@@ -348,6 +361,7 @@ public class Lev1Diff1 : MonoBehaviour
         }
         else
         {
+            PreviousGuessesText.text += guess + "\n";
             failedAttempt();
             doWordle();
             IncorrectText.enabled = true;
