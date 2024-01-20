@@ -2818,6 +2818,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780234754}
   m_CullTransparentMesh: 1
+--- !u!1 &787376964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787376966}
+  - component: {fileID: 787376965}
+  m_Layer: 0
+  m_Name: Lev2Diff3Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &787376965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787376964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d081e0f8a613a4097c30e651b0ec01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  megashText: {fileID: 87939855}
+  IncorrectText: {fileID: 2145931986}
+  PreviousGuessesText: {fileID: 287843380}
+  FirstLetterGuess: {fileID: 366440515}
+  SecondLetterGuess: {fileID: 1512007491}
+  ThirdLetterGuess: {fileID: 280548748}
+  FourthLetterGuess: {fileID: 1083551133}
+  FifthLetterGuess: {fileID: 568187738}
+  SixthLetterGuess: {fileID: 1615152403}
+  SeventhLetterGuess: {fileID: 1595014544}
+  EighthLetterGuess: {fileID: 1127498661}
+  FirstLetterText: {fileID: 652397688}
+  SecondLetterText: {fileID: 2118339584}
+  ThirdLetterText: {fileID: 64372522}
+  FourthLetterText: {fileID: 2004465297}
+  FifthLetterText: {fileID: 706363596}
+  SixthLetterText: {fileID: 77782961}
+  SeventhLetterText: {fileID: 549367277}
+  EighthLetterText: {fileID: 976036348}
+  NinthLetterText: {fileID: 1629212881}
+  TenthLetterText: {fileID: 1683438259}
+  FirstLetterBtn: {fileID: 1076978973}
+  SecondLetterBtn: {fileID: 352292544}
+  ThirdLetterBtn: {fileID: 1144275003}
+  FourthLetterBtn: {fileID: 2075274374}
+  FifthLetterBtn: {fileID: 1697923619}
+  SixthLetterBtn: {fileID: 2132699961}
+  SeventhLetterBtn: {fileID: 1473447520}
+  EighthLetterBtn: {fileID: 530353025}
+  NinthLetterBtn: {fileID: 1735527705}
+  TenthLetterBtn: {fileID: 1587507579}
+  attemptOne: {fileID: 2034642378}
+  attemptTwo: {fileID: 1363513487}
+  attemptThree: {fileID: 439915377}
+  attemptFour: {fileID: 2129144037}
+  attemptFive: {fileID: 1812501619}
+  attemptSix: {fileID: 2118565381}
+  hintBtn: {fileID: 274351256}
+  autoWinBtn: {fileID: 1877594771}
+--- !u!4 &787376966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787376964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 520.2168, y: 275.0576, z: 0.5350767}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &818833977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,8 +2984,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Lev1Diff3, Assembly-CSharp
+      - m_Target: {fileID: 787376965}
+        m_TargetAssemblyTypeName: Lev2Diff3, Assembly-CSharp
         m_MethodName: DeleteBtnOnclick
         m_Mode: 1
         m_Arguments:
@@ -4870,8 +4953,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Lev1Diff3, Assembly-CSharp
+      - m_Target: {fileID: 787376965}
+        m_TargetAssemblyTypeName: Lev2Diff3, Assembly-CSharp
         m_MethodName: GuessBtnOnclick
         m_Mode: 1
         m_Arguments:
@@ -5137,8 +5220,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Lev1Diff3, Assembly-CSharp
+      - m_Target: {fileID: 787376965}
+        m_TargetAssemblyTypeName: Lev2Diff3, Assembly-CSharp
         m_MethodName: toHelp
         m_Mode: 1
         m_Arguments:
@@ -6679,8 +6762,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Lev1Diff3, Assembly-CSharp
+      - m_Target: {fileID: 787376965}
+        m_TargetAssemblyTypeName: Lev2Diff3, Assembly-CSharp
         m_MethodName: toMain
         m_Mode: 1
         m_Arguments:
@@ -7780,3 +7863,4 @@ SceneRoots:
   - {fileID: 1377704555}
   - {fileID: 281340100}
   - {fileID: 214624351}
+  - {fileID: 787376966}

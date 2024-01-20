@@ -670,8 +670,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Lev1Diff3, Assembly-CSharp
+      - m_Target: {fileID: 780161832}
+        m_TargetAssemblyTypeName: Lev2Diff2, Assembly-CSharp
         m_MethodName: toHelp
         m_Mode: 1
         m_Arguments:
@@ -1522,8 +1522,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Lev1Diff3, Assembly-CSharp
+      - m_Target: {fileID: 780161832}
+        m_TargetAssemblyTypeName: Lev2Diff2, Assembly-CSharp
         m_MethodName: DeleteBtnOnclick
         m_Mode: 1
         m_Arguments:
@@ -1655,8 +1655,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Lev1Diff3, Assembly-CSharp
+      - m_Target: {fileID: 780161832}
+        m_TargetAssemblyTypeName: Lev2Diff2, Assembly-CSharp
         m_MethodName: toMain
         m_Mode: 1
         m_Arguments:
@@ -2836,6 +2836,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773749682}
   m_CullTransparentMesh: 1
+--- !u!1 &780161831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 780161833}
+  - component: {fileID: 780161832}
+  m_Layer: 0
+  m_Name: Lev2Diff2Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &780161832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780161831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d924a7e9a2af3347895e8b79d3bbe37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  megashText: {fileID: 902772080}
+  IncorrectText: {fileID: 1404382251}
+  PreviousGuessesText: {fileID: 1578458002}
+  FirstLetterGuess: {fileID: 1543547761}
+  SecondLetterGuess: {fileID: 1841794706}
+  ThirdLetterGuess: {fileID: 245608458}
+  FourthLetterGuess: {fileID: 1195664968}
+  FifthLetterGuess: {fileID: 21366283}
+  SixthLetterGuess: {fileID: 1665145078}
+  SeventhLetterGuess: {fileID: 262717656}
+  EighthLetterGuess: {fileID: 1470246101}
+  FirstLetterText: {fileID: 2129844262}
+  SecondLetterText: {fileID: 453594322}
+  ThirdLetterText: {fileID: 1364804575}
+  FourthLetterText: {fileID: 376698179}
+  FifthLetterText: {fileID: 1752342441}
+  SixthLetterText: {fileID: 1150954844}
+  SeventhLetterText: {fileID: 1382521893}
+  EighthLetterText: {fileID: 902282592}
+  NinthLetterText: {fileID: 1967358293}
+  FirstLetterBtn: {fileID: 665001233}
+  SecondLetterBtn: {fileID: 1705916649}
+  ThirdLetterBtn: {fileID: 316242489}
+  FourthLetterBtn: {fileID: 766148202}
+  FifthLetterBtn: {fileID: 1417865251}
+  SixthLetterBtn: {fileID: 1090550157}
+  SeventhLetterBtn: {fileID: 1279214800}
+  EighthLetterBtn: {fileID: 1002953491}
+  NinthLetterBtn: {fileID: 665271351}
+  attemptOne: {fileID: 1708966615}
+  attemptTwo: {fileID: 1191747851}
+  attemptThree: {fileID: 1795101530}
+  attemptFour: {fileID: 245760170}
+  attemptFive: {fileID: 2056981938}
+  attemptSix: {fileID: 11910637}
+  hintBtn: {fileID: 104783576}
+  autoWinBtn: {fileID: 1795868616}
+--- !u!4 &780161833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780161831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 520.2168, y: 275.0576, z: 0.5350767}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789403122
 GameObject:
   m_ObjectHideFlags: 0
@@ -6197,8 +6278,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Lev1Diff3, Assembly-CSharp
+      - m_Target: {fileID: 780161832}
+        m_TargetAssemblyTypeName: Lev2Diff2, Assembly-CSharp
         m_MethodName: GuessBtnOnclick
         m_Mode: 1
         m_Arguments:
@@ -7524,3 +7605,4 @@ SceneRoots:
   - {fileID: 1237856391}
   - {fileID: 1944747430}
   - {fileID: 2066453253}
+  - {fileID: 780161833}

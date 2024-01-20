@@ -737,15 +737,15 @@ public class Lev2Diff1 : MonoBehaviour
         {
             FifthLetterGuess.text = letter.ToString();
         }
-        else if (hintIndex == 2)
+        else if (hintIndex == 5)
         {
             SixthLetterGuess.text = letter.ToString();
         }
-        else if (hintIndex == 3)
+        else if (hintIndex == 6)
         {
             SeventhLetterGuess.text = letter.ToString();
         }
-        else if (hintIndex == 4)
+        else if (hintIndex == 7)
         {
             EighthLetterGuess.text = letter.ToString();
         }
