@@ -29,11 +29,11 @@ public class SelectWord : MonoBehaviour
         }
         else if(level == 2)
         {
-            n = rand.Next(0, 5);
+            n = rand.Next(0, 504);
         }
         else if (level == 3)
         {
-            n= rand.Next(0, 5);
+            n= rand.Next(0, 71);
         }
 
         string filename = "Assets/Database/demoFiveLetters.txt";
@@ -41,13 +41,13 @@ public class SelectWord : MonoBehaviour
         {
             filename = "Assets/Database/fiveLetterWords.txt";
         }
-        if(level == 2)
+        else if(level == 2)
         {
-            filename = "Assets/Database/demoEightLetters.txt";
+            filename = "Assets/Database/eightLetterWords.txt";
         }
-        if (level == 3)
+        else if (level == 3)
         {
-            filename = "Assets/Database/demoTwelveLetters.txt";
+            filename = "Assets/Database/twelveLetterWords.txt";
         }
 
         try
@@ -81,11 +81,11 @@ public class SelectWord : MonoBehaviour
             {
                 UsedWords.fiveUsed();
             }
-            if (level == 2)
+            else if (level == 2)
             {
                 UsedWords.eightUsed();
             }
-            if (level == 3)
+            else if (level == 3)
             {
                 UsedWords.twelveUsed();
             }

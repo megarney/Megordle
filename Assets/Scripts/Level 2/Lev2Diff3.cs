@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Lev1Diff3 : MonoBehaviour
+public class Lev2Diff3 : MonoBehaviour
 {
     static string scrambled;
     string filled; //shows '0's if there is no letter in that index in the player's guess and '1's if there is a letter (sh_w_ => 11010)
@@ -15,6 +15,7 @@ public class Lev1Diff3 : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI megashText;
     [SerializeField] private TextMeshProUGUI IncorrectText;
+    [SerializeField] private TextMeshProUGUI UnfilledSlotsText;
 
     [SerializeField] private TextMeshProUGUI PreviousGuessesText;
 
@@ -24,6 +25,9 @@ public class Lev1Diff3 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ThirdLetterGuess;
     [SerializeField] private TextMeshProUGUI FourthLetterGuess;
     [SerializeField] private TextMeshProUGUI FifthLetterGuess;
+    [SerializeField] private TextMeshProUGUI SixthLetterGuess;
+    [SerializeField] private TextMeshProUGUI SeventhLetterGuess;
+    [SerializeField] private TextMeshProUGUI EighthLetterGuess;
 
     //Controls the text that is displayed on each of the buttons
     [SerializeField] private TextMeshProUGUI FirstLetterText;
@@ -33,6 +37,9 @@ public class Lev1Diff3 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI FifthLetterText;
     [SerializeField] private TextMeshProUGUI SixthLetterText;
     [SerializeField] private TextMeshProUGUI SeventhLetterText;
+    [SerializeField] private TextMeshProUGUI EighthLetterText;
+    [SerializeField] private TextMeshProUGUI NinthLetterText;
+    [SerializeField] private TextMeshProUGUI TenthLetterText;
 
     //Controls the buttons
     [SerializeField] private Button FirstLetterBtn;
@@ -42,12 +49,17 @@ public class Lev1Diff3 : MonoBehaviour
     [SerializeField] private Button FifthLetterBtn;
     [SerializeField] private Button SixthLetterBtn;
     [SerializeField] private Button SeventhLetterBtn;
+    [SerializeField] private Button EighthLetterBtn;
+    [SerializeField] private Button NinthLetterBtn;
+    [SerializeField] private Button TenthLetterBtn;
 
     //Controls the user's attempts/hearts
     [SerializeField] private Image attemptOne;
     [SerializeField] private Image attemptTwo;
     [SerializeField] private Image attemptThree;
     [SerializeField] private Image attemptFour;
+    [SerializeField] private Image attemptFive;
+    [SerializeField] private Image attemptSix;
 
     [SerializeField] private Button hintBtn;
     [SerializeField] private Button autoWinBtn;
@@ -57,17 +69,16 @@ public class Lev1Diff3 : MonoBehaviour
      */
     public void toHelp()
     {
-        PlayerPrefs.SetString("LevelOneAnswer", Game.GetAnswer());
-        PlayerPrefs.SetString("LevelOneWordle", wordle);
-        PlayerPrefs.SetInt("LevelOneDiff", 3);
-        PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
-        PlayerPrefs.SetString("LevelOneScrambled", scrambled);
-        PlayerPrefs.SetInt("LevelOnePoints", Points.getPoints());
-        PlayerPrefs.SetString("LevelOneGuesses", PreviousGuessesText.text);
+        PlayerPrefs.SetString("LevelTwoAnswer", Game.GetAnswer());
+        PlayerPrefs.SetString("LevelTwoWordle", wordle);
+        PlayerPrefs.SetInt("LevelTwoAttempts", Attempt.GetAttempts());
+        PlayerPrefs.SetString("LevelTwoScrambled", scrambled);
+        PlayerPrefs.SetInt("LevelTwoPoints", Points.getPoints());
+        PlayerPrefs.SetString("LevelTwoGuesses", PreviousGuessesText.text);
 
-        PlayerPrefs.SetInt("LevelOne", 1);
+        PlayerPrefs.SetInt("LevelTwo", 1);
 
-        Help.SetScene("Lev1Diff3");
+        Help.SetScene("Lev2Diff3");
         SceneManager.LoadSceneAsync("Help");
     }
 
@@ -76,15 +87,14 @@ public class Lev1Diff3 : MonoBehaviour
      */
     public void toMain()
     {
-        PlayerPrefs.SetString("LevelOneAnswer", Game.GetAnswer());
-        PlayerPrefs.SetString("LevelOneWordle", wordle);
-        PlayerPrefs.SetInt("LevelOneDiff", 3);
-        PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
-        PlayerPrefs.SetString("LevelOneScrambled", scrambled);
-        PlayerPrefs.SetInt("LevelOnePoints", Points.getPoints());
-        PlayerPrefs.SetString("LevelOneGuesses", PreviousGuessesText.text);
+        PlayerPrefs.SetString("LevelTwoAnswer", Game.GetAnswer());
+        PlayerPrefs.SetString("LevelTwoWordle", wordle);
+        PlayerPrefs.SetInt("LevelTwoAttempts", Attempt.GetAttempts());
+        PlayerPrefs.SetString("LevelTwoScrambled", scrambled);
+        PlayerPrefs.SetInt("LevelTwoPoints", Points.getPoints());
+        PlayerPrefs.SetString("LevelTwoGuesses", PreviousGuessesText.text);
 
-        PlayerPrefs.SetInt("LevelOne", 1);
+        PlayerPrefs.SetInt("LevelTwo", 1);
 
         SceneManager.LoadSceneAsync("Main Menu");
     }
@@ -107,15 +117,19 @@ public class Lev1Diff3 : MonoBehaviour
         megashText.text = Megash.getTotalCash().ToString();
         scrambled = Game.GetScrambled();
         IncorrectText.enabled = false;
-        filled = "00000";
-        guess = "_____";
-        wordle = "_____";
+        UnfilledSlotsText.enabled = false;
+        filled = "00000000";
+        guess = "________";
+        wordle = "________";
 
         FirstLetterGuess.text = "";
         SecondLetterGuess.text = "";
         ThirdLetterGuess.text = "";
         FourthLetterGuess.text = "";
         FifthLetterGuess.text = "";
+        SixthLetterGuess.text = "";
+        SeventhLetterGuess.text = "";
+        EighthLetterGuess.text = "";
 
         FirstLetterBtn.onClick.AddListener(FirstLetterBtnOnclick);
         SecondLetterBtn.onClick.AddListener(SecondLetterBtnOnclick);
@@ -124,6 +138,9 @@ public class Lev1Diff3 : MonoBehaviour
         FifthLetterBtn.onClick.AddListener(FifthLetterBtnOnclick);
         SixthLetterBtn.onClick.AddListener(SixthLetterBtnOnclick);
         SeventhLetterBtn.onClick.AddListener(SeventhLetterBtnOnclick);
+        EighthLetterBtn.onClick.AddListener(EighthLetterBtnOnclick);
+        NinthLetterBtn.onClick.AddListener(NinthLetterBtnOnclick);
+        TenthLetterBtn.onClick.AddListener(TenthLetterBtnOnclick);
 
         FirstLetterText.text = scrambled.Substring(0, 1);
         SecondLetterText.text = scrambled.Substring(1, 1);
@@ -131,34 +148,44 @@ public class Lev1Diff3 : MonoBehaviour
         FourthLetterText.text = scrambled.Substring(3, 1);
         FifthLetterText.text = scrambled.Substring(4, 1);
         SixthLetterText.text = scrambled.Substring(5, 1);
-        SeventhLetterText.text = scrambled.Substring(6);
+        SeventhLetterText.text = scrambled.Substring(6, 1);
+        EighthLetterText.text = scrambled.Substring(7, 1);
+        NinthLetterText.text = scrambled.Substring(8, 1);
+        TenthLetterText.text = scrambled.Substring(9);
 
-
-        if (PlayerPrefs.GetInt("LevelOne") == 1)
+        if (PlayerPrefs.GetInt("LevelTwo") == 1)
         {
-            if (PlayerPrefs.GetInt("LevelOneAttempts") <= 3)
+            if (PlayerPrefs.GetInt("LevelTwoAttempts") <= 5)
             {
                 attemptOne.enabled = false;
             }
-            if (PlayerPrefs.GetInt("LevelOneAttempts") <= 2)
+            if (PlayerPrefs.GetInt("LevelTwoAttempts") <= 4)
             {
                 attemptTwo.enabled = false;
             }
-            if (PlayerPrefs.GetInt("LevelOneAttempts") <= 1)
+            if (PlayerPrefs.GetInt("LevelTwoAttempts") <= 3)
             {
                 attemptThree.enabled = false;
             }
-            wordle = PlayerPrefs.GetString("LevelOneWordle");
+            if (PlayerPrefs.GetInt("LevelTwoAttempts") <= 2)
+            {
+                attemptFour.enabled = false;
+            }
+            if (PlayerPrefs.GetInt("LevelTwoAttempts") <= 1)
+            {
+                attemptFive.enabled = false;
+            }
+            wordle = PlayerPrefs.GetString("LevelTwoWordle");
             contWordle();
 
-            if (!PlayerPrefs.GetString("LevelOneGuesses").Equals(""))
+            if (!PlayerPrefs.GetString("LevelTwoGuesses").Equals(""))
             {
-                PreviousGuessesText.text = PlayerPrefs.GetString("LevelOneGuesses");
+                PreviousGuessesText.text = PlayerPrefs.GetString("LevelTwoGuesses");
             }
         }
         else
         {
-            PlayerPrefs.SetString("LevelOneGuesses", "");
+            PlayerPrefs.SetString("LevelTwoGuesses", "");
         }
 
         if (Megash.getTotalCash() < 50)
@@ -191,7 +218,7 @@ public class Lev1Diff3 : MonoBehaviour
      */
     public void FirstLetterBtnOnclick()
     {
-        if (!filled.Equals("11111"))
+        if (!filled.Equals("11111111"))
         {
             addLetter(FirstLetterText.text);
             FirstLetterBtn.interactable = false;
@@ -200,7 +227,7 @@ public class Lev1Diff3 : MonoBehaviour
 
     public void SecondLetterBtnOnclick()
     {
-        if (!filled.Equals("11111"))
+        if (!filled.Equals("11111111"))
         {
             addLetter(SecondLetterText.text);
             SecondLetterBtn.interactable = false;
@@ -209,7 +236,7 @@ public class Lev1Diff3 : MonoBehaviour
 
     public void ThirdLetterBtnOnclick()
     {
-        if (!filled.Equals("11111"))
+        if (!filled.Equals("11111111"))
         {
             addLetter(ThirdLetterText.text);
             ThirdLetterBtn.interactable = false;
@@ -218,7 +245,7 @@ public class Lev1Diff3 : MonoBehaviour
 
     public void FourthLetterBtnOnclick()
     {
-        if (!filled.Equals("11111"))
+        if (!filled.Equals("11111111"))
         {
             addLetter(FourthLetterText.text);
             FourthLetterBtn.interactable = false;
@@ -227,7 +254,7 @@ public class Lev1Diff3 : MonoBehaviour
 
     public void FifthLetterBtnOnclick()
     {
-        if (!filled.Equals("11111"))
+        if (!filled.Equals("11111111"))
         {
             addLetter(FifthLetterText.text);
             FifthLetterBtn.interactable = false;
@@ -236,7 +263,7 @@ public class Lev1Diff3 : MonoBehaviour
 
     public void SixthLetterBtnOnclick()
     {
-        if (!filled.Equals("11111"))
+        if (!filled.Equals("11111111"))
         {
             addLetter(SixthLetterText.text);
             SixthLetterBtn.interactable = false;
@@ -245,10 +272,37 @@ public class Lev1Diff3 : MonoBehaviour
 
     public void SeventhLetterBtnOnclick()
     {
-        if (!filled.Equals("11111"))
+        if (!filled.Equals("11111111"))
         {
             addLetter(SeventhLetterText.text);
             SeventhLetterBtn.interactable = false;
+        }
+    }
+
+    public void EighthLetterBtnOnclick()
+    {
+        if (!filled.Equals("11111111"))
+        {
+            addLetter(EighthLetterText.text);
+            EighthLetterBtn.interactable = false;
+        }
+    }
+
+    public void NinthLetterBtnOnclick()
+    {
+        if (!filled.Equals("11111111"))
+        {
+            addLetter(NinthLetterText.text);
+            NinthLetterBtn.interactable = false;
+        }
+    }
+
+    public void TenthLetterBtnOnclick()
+    {
+        if (!filled.Equals("11111111"))
+        {
+            addLetter(TenthLetterText.text);
+            TenthLetterBtn.interactable = false;
         }
     }
 
@@ -283,6 +337,18 @@ public class Lev1Diff3 : MonoBehaviour
                 {
                     FifthLetterGuess.text = letter;
                 }
+                else if (ind == 5)
+                {
+                    SixthLetterGuess.text = letter;
+                }
+                else if (ind == 6)
+                {
+                    SeventhLetterGuess.text = letter;
+                }
+                else if (ind == 7)
+                {
+                    EighthLetterGuess.text = letter;
+                }
                 char[] filledarr = filled.ToCharArray();
                 filledarr[ind] = '1';
                 filled = new string(filledarr);
@@ -304,7 +370,7 @@ public class Lev1Diff3 : MonoBehaviour
      */
     public void DeleteBtnOnclick()
     {
-        if (!filled.Equals("00000"))
+        if (!filled.Equals("00000000"))
         {
             int ind = 0;
             int indone = -1;
@@ -357,6 +423,21 @@ public class Lev1Diff3 : MonoBehaviour
             EnableButton(FifthLetterGuess.text);
             FifthLetterGuess.text = "";
         }
+        else if (index == 5)
+        {
+            EnableButton(SixthLetterGuess.text);
+            SixthLetterGuess.text = "";
+        }
+        else if (index == 6)
+        {
+            EnableButton(SeventhLetterGuess.text);
+            SeventhLetterGuess.text = "";
+        }
+        else if (index == 7)
+        {
+            EnableButton(EighthLetterGuess.text);
+            EighthLetterGuess.text = "";
+        }
     }
 
     /*
@@ -371,7 +452,12 @@ public class Lev1Diff3 : MonoBehaviour
      */
     public void GuessBtnOnclick()
     {
-        if (guess.Equals(Game.GetAnswer()))
+        if (!filled.Equals("11111111"))
+        {
+            UnfilledSlotsText.enabled = true;
+            Invoke("DisableText", 3f);
+        }
+        else if (guess.Equals(Game.GetAnswer()))
         {
             Streak.increaseStreak();
             SceneManager.LoadSceneAsync("Correct");
@@ -389,6 +475,7 @@ public class Lev1Diff3 : MonoBehaviour
     private void DisableText()
     {
         IncorrectText.enabled = false;
+        UnfilledSlotsText.enabled = false;
     }
 
     /*
@@ -415,17 +502,25 @@ public class Lev1Diff3 : MonoBehaviour
         }
         else
         {
-            if (attempts == 3)
+            if (attempts == 5)
             {
                 attemptOne.enabled = false;
             }
-            else if (attempts == 2)
+            else if (attempts == 4)
             {
                 attemptTwo.enabled = false;
             }
-            else if (attempts == 1)
+            else if (attempts == 3)
             {
                 attemptThree.enabled = false;
+            }
+            else if (attempts == 2)
+            {
+                attemptFour.enabled = false;
+            }
+            else if (attempts == 1)
+            {
+                attemptFive.enabled = false;
             }
         }
     }
@@ -474,6 +569,21 @@ public class Lev1Diff3 : MonoBehaviour
                     EnableButton(FifthLetterGuess.text);
                     FifthLetterGuess.text = "";
                 }
+                else if (ind == 5)
+                {
+                    EnableButton(SixthLetterGuess.text);
+                    SixthLetterGuess.text = "";
+                }
+                else if (ind == 6)
+                {
+                    EnableButton(SeventhLetterGuess.text);
+                    SeventhLetterGuess.text = "";
+                }
+                else if (ind == 7)
+                {
+                    EnableButton(EighthLetterGuess.text);
+                    EighthLetterGuess.text = "";
+                }
                 char[] guessarr = guess.ToCharArray();
                 guessarr[ind] = '_';
                 guess = new string(guessarr);
@@ -520,6 +630,18 @@ public class Lev1Diff3 : MonoBehaviour
         {
             SeventhLetterBtn.interactable = true;
         }
+        else if (letter.Equals(EighthLetterText.text) && EighthLetterBtn.interactable == false)
+        {
+            EighthLetterBtn.interactable = true;
+        }
+        else if (letter.Equals(NinthLetterText.text) && NinthLetterBtn.interactable == false)
+        {
+            NinthLetterBtn.interactable = true;
+        }
+        else if (letter.Equals(TenthLetterText.text) && TenthLetterBtn.interactable == false)
+        {
+            TenthLetterBtn.interactable = true;
+        }
     }
 
     public void contWordle()
@@ -551,6 +673,18 @@ public class Lev1Diff3 : MonoBehaviour
                 else if (ind == 4)
                 {
                     FifthLetterGuess.text = letter.ToString();
+                }
+                else if (ind == 5)
+                {
+                    SixthLetterGuess.text = letter.ToString();
+                }
+                else if (ind == 6)
+                {
+                    SeventhLetterGuess.text = letter.ToString();
+                }
+                else if (ind == 7)
+                {
+                    EighthLetterGuess.text = letter.ToString();
                 }
                 char[] guessarr = guess.ToCharArray();
                 guessarr[ind] = letter;
@@ -595,6 +729,18 @@ public class Lev1Diff3 : MonoBehaviour
         {
             SeventhLetterBtn.interactable = false;
         }
+        else if (letter.Equals(EighthLetterText.text) && EighthLetterBtn.interactable == true)
+        {
+            EighthLetterBtn.interactable = false;
+        }
+        else if (letter.Equals(NinthLetterText.text) && NinthLetterBtn.interactable == true)
+        {
+            NinthLetterBtn.interactable = false;
+        }
+        else if (letter.Equals(TenthLetterText.text) && TenthLetterBtn.interactable == true)
+        {
+            TenthLetterBtn.interactable = false;
+        }
     }
 
     public void hint()
@@ -609,7 +755,7 @@ public class Lev1Diff3 : MonoBehaviour
 
         if (wordle == null)
         {
-            wordle = Hint.hint("_____");
+            wordle = Hint.hint("________");
         }
         else
         {
@@ -640,6 +786,18 @@ public class Lev1Diff3 : MonoBehaviour
         else if (hintIndex == 4)
         {
             FifthLetterGuess.text = letter.ToString();
+        }
+        else if (hintIndex == 5)
+        {
+            SixthLetterGuess.text = letter.ToString();
+        }
+        else if (hintIndex == 6)
+        {
+            SeventhLetterGuess.text = letter.ToString();
+        }
+        else if (hintIndex == 7)
+        {
+            EighthLetterGuess.text = letter.ToString();
         }
 
         char[] filledarr = filled.ToCharArray();

@@ -47,7 +47,7 @@ public class UsedWords : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("EightAvailable", 5);
+            PlayerPrefs.SetInt("EightAvailable", 504);
             return 5;
         }
     }
@@ -65,7 +65,7 @@ public class UsedWords : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("TwelveAvailable", 5);
+            PlayerPrefs.SetInt("TwelveAvailable", 71);
             return 5;
         }
     }

@@ -24,6 +24,24 @@ public class Options : MonoBehaviour
 
     public void Reset()
     {
+        soundEffectsBtn.image.sprite = soundEffectsOn;
+        if (PlayerPrefs.HasKey("soundEffectsPref"))
+        {
+            if (PlayerPrefs.GetString("soundEffectsPref").Equals("Off"))
+            {
+                //
+            }
+        }
+
+        MusicBtn.image.sprite = MusicOn;
+        if (PlayerPrefs.HasKey("MusicPref"))
+        {
+            if (PlayerPrefs.GetString("MusicPref").Equals("Off"))
+            {
+                Music.Instance.ToggleMusic();
+            }
+        }
+
         UsedWords.reset();
         PlayerPrefs.DeleteAll();
     }
