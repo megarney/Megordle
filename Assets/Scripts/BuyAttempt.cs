@@ -14,12 +14,25 @@ using TMPro;
 
 public class BuyAttempt : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI megashText;
+
+    void Start()
+    {
+        megashText.text = Megash.getTotalCash().ToString();
+    }
+
+    public static string scene;
+
+    public static void SetScene(string sc)
+    {
+        scene = sc;
+    }
+
     /*
      * If the user clicks on the house icon, they are directed to the main men
      */
-    public void returnToMain()
-    {
-        SceneManager.LoadSceneAsync("Main Menu");
+    public void giveUp() { 
+        SceneManager.LoadSceneAsync("Fail");
     }
 
     /*
@@ -28,7 +41,9 @@ public class BuyAttempt : MonoBehaviour
      */
     public void oneMoreTry()
     {
+        Attempt.SetAttempts(1);
+
         PlayerPrefs.SetInt("Megash", (PlayerPrefs.GetInt("Megash")) - 50);
-        //
+        SceneManager.LoadSceneAsync(scene);
     }
 }

@@ -587,7 +587,17 @@ public class Lev3Diff2 : MonoBehaviour
         int attempts = Attempt.failedAttempt();
         if (attempts == 0 && PlayerPrefs.GetInt("Megash") >= 50)
         {
-            SceneManager.LoadSceneAsync("Fail");
+            doWordle();
+
+            PlayerPrefs.SetString("LevelThreeWordle", wordle);
+            PlayerPrefs.SetInt("LevelThreeDiff", 1);
+            PlayerPrefs.SetString("LevelThreeScrambled", scrambled);
+            PlayerPrefs.SetInt("LevelThreePoints", Points.getPoints());
+            PlayerPrefs.SetString("LevelThreeGuesses", PreviousGuessesText.text);
+            PlayerPrefs.SetInt("LevelThree", 1);
+
+            BuyAttempt.SetScene("Lev3Diff2");
+            SceneManager.LoadSceneAsync("Buy Attempt");
         }
         else if (attempts == 0)
         {

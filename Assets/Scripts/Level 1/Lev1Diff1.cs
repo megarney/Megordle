@@ -398,7 +398,19 @@ public class Lev1Diff1 : MonoBehaviour
         int attempts = Attempt.failedAttempt();
         if (attempts == 0 && PlayerPrefs.GetInt("Megash") >= 50)
         {
-            SceneManager.LoadSceneAsync("Fail");
+            doWordle();
+
+            PlayerPrefs.SetString("LevelOneAnswer", AnswerText.text);
+            PlayerPrefs.SetString("LevelOneWordle", wordle);
+            PlayerPrefs.SetInt("LevelOneDiff", 1);
+            PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
+            PlayerPrefs.SetString("LevelOneScrambled", scrambled);
+            PlayerPrefs.SetInt("LevelOnePoints", Points.getPoints());
+            PlayerPrefs.SetString("LevelOneGuesses", PreviousGuessesText.text);
+            PlayerPrefs.SetInt("LevelOne", 1);
+
+            BuyAttempt.SetScene("Lev1Diff1");
+            SceneManager.LoadSceneAsync("Buy Attempt");
         }
         else if (attempts == 0)
         {

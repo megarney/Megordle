@@ -481,7 +481,17 @@ public class Lev2Diff2 : MonoBehaviour
         int attempts = Attempt.failedAttempt();
         if (attempts == 0 && PlayerPrefs.GetInt("Megash") >= 50)
         {
-            SceneManager.LoadSceneAsync("Fail");
+            doWordle();
+
+            PlayerPrefs.SetString("LevelTwoWordle", wordle);
+            PlayerPrefs.SetInt("LevelTwoDiff", 1);
+            PlayerPrefs.SetString("LevelTwoScrambled", scrambled);
+            PlayerPrefs.SetInt("LevelTwoPoints", Points.getPoints());
+            PlayerPrefs.SetString("LevelTwoGuesses", PreviousGuessesText.text);
+            PlayerPrefs.SetInt("LevelTwo", 1);
+
+            BuyAttempt.SetScene("Lev2Diff2");
+            SceneManager.LoadSceneAsync("Buy Attempt");
         }
         else if (attempts == 0)
         {

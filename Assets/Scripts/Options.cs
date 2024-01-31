@@ -23,15 +23,7 @@ public class Options : MonoBehaviour
     }
 
     public void Reset()
-    {
-        soundEffectsBtn.image.sprite = soundEffectsOn;
-        if (PlayerPrefs.HasKey("soundEffectsPref"))
-        {
-            if (PlayerPrefs.GetString("soundEffectsPref").Equals("Off"))
-            {
-                //
-            }
-        }
+    {soundEffectsBtn.image.sprite = soundEffectsOn;
 
         MusicBtn.image.sprite = MusicOn;
         if (PlayerPrefs.HasKey("MusicPref"))
@@ -44,6 +36,8 @@ public class Options : MonoBehaviour
 
         UsedWords.reset();
         PlayerPrefs.DeleteAll();
+
+        PlayerPrefs.SetInt("Megash", 1000);
     }
 
     [SerializeField] private Sprite soundEffectsOn;
