@@ -317,8 +317,7 @@ MonoBehaviour:
     row. For example, if you were to select level 1 (+0) and difficulty 1 (+0); and
     have a streak of 2 (+20) you can receive up to 120 points. Whereas if you were
     to select level 2 (+50) and difficulty 2 (+10); and have a streak of 0 (+0) you
-    can receive up to 160 points. You will lose 10 points for a failed guess and
-    20 points for using a hint."
+    can receive up to 160 points. You will lose 10 points for a failed guess."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6e21189707796c4aa0a2943f2a4c539, type: 2}
   m_sharedMaterial: {fileID: 3236546305748627934, guid: f6e21189707796c4aa0a2943f2a4c539, type: 2}
@@ -345,8 +344,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -665,8 +664,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: -0.0000033379}
-  m_SizeDelta: {x: 709.8403, y: 447.5564}
+  m_AnchoredPosition: {x: 0.000011563, y: 27}
+  m_SizeDelta: {x: 710.9039, y: 372.0408}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374856546
 MonoBehaviour:
@@ -1235,7 +1234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

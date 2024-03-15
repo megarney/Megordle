@@ -48,7 +48,7 @@ public class DifficultySelect : MonoBehaviour
     public static void DifficultyOne()
     {
         Game.SetDifficulty(1);
-        SelectWord.extraLetters(1);
+        WordSelection.extraLetters(1);
         Game.Scramble();
         Points.points();
 
@@ -73,7 +73,7 @@ public class DifficultySelect : MonoBehaviour
     public static void DifficultyTwo()
     {
         Game.SetDifficulty(2);
-        SelectWord.extraLetters(2);
+        WordSelection.extraLetters(2);
         Game.Scramble();
         Points.points();
 
@@ -98,7 +98,7 @@ public class DifficultySelect : MonoBehaviour
     public static void DifficultyThree()
     {
         Game.SetDifficulty(3);
-        SelectWord.extraLetters(3);
+        WordSelection.extraLetters(3);
         Game.Scramble();
         Points.points();
 

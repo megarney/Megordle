@@ -34,10 +34,12 @@ public class Options : MonoBehaviour
             }
         }
 
-        UsedWords.reset();
+        //UsedWords.reset();
         PlayerPrefs.DeleteAll();
 
-        PlayerPrefs.SetInt("Megash", 1000);
+        PlayerPrefs.SetInt("Megash", 500);
+
+        WordSelection.clearLists();
     }
 
     [SerializeField] private Sprite soundEffectsOn;

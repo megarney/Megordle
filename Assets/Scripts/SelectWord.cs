@@ -36,18 +36,18 @@ public class SelectWord : MonoBehaviour
             n= rand.Next(0, 71);
         }
 
-        string filename = "Assets/Database/demoFiveLetters.txt";
+        string filename = "Assets/Resources/Database/fiveLetterWords.txt";
         if(level == 1)
         {
-            filename = "Assets/Database/fiveLetterWords.txt";
+            filename = "Assets/Resources/Database/fiveLetterWords.txt";
         }
         else if(level == 2)
         {
-            filename = "Assets/Database/eightLetterWords.txt";
+            filename = "Assets/Resources/Database/eightLetterWords.txt";
         }
         else if (level == 3)
         {
-            filename = "Assets/Database/twelveLetterWords.txt";
+            filename = "Assets/Resources/Database/twelveLetterWords.txt";
         }
 
         try

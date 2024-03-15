@@ -23,7 +23,7 @@ public class Lev1Diff1 : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI megashText;
 
-    [SerializeField] private TextMeshProUGUI AnswerText;
+    //[SerializeField] private TextMeshProUGUI AnswerText;
     [SerializeField] private TextMeshProUGUI IncorrectText;
     [SerializeField] private TextMeshProUGUI UnfilledSlotsText;
 
@@ -64,7 +64,7 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void toHelp()
     {
-        PlayerPrefs.SetString("LevelOneAnswer", AnswerText.text);
+        PlayerPrefs.SetString("LevelOneAnswer", Game.GetAnswer());
         PlayerPrefs.SetString("LevelOneWordle", wordle);
         PlayerPrefs.SetInt("LevelOneDiff", 1);
         PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
@@ -83,7 +83,7 @@ public class Lev1Diff1 : MonoBehaviour
      */
     public void toMain()
     {
-        PlayerPrefs.SetString("LevelOneAnswer", AnswerText.text);
+        PlayerPrefs.SetString("LevelOneAnswer", Game.GetAnswer());
         PlayerPrefs.SetString("LevelOneWordle", wordle);
         PlayerPrefs.SetInt("LevelOneDiff", 1);
         PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());
@@ -112,7 +112,7 @@ public class Lev1Diff1 : MonoBehaviour
         UsedWords.saveList();
 
         megashText.text = Megash.getTotalCash().ToString();
-        AnswerText.text = Game.GetAnswer();
+        //AnswerText.text = Game.GetAnswer();
         scrambled = Game.GetScrambled();
         IncorrectText.enabled = false;
         UnfilledSlotsText.enabled = false;
@@ -400,7 +400,7 @@ public class Lev1Diff1 : MonoBehaviour
         {
             doWordle();
 
-            PlayerPrefs.SetString("LevelOneAnswer", AnswerText.text);
+            PlayerPrefs.SetString("LevelOneAnswer", Game.GetAnswer());
             PlayerPrefs.SetString("LevelOneWordle", wordle);
             PlayerPrefs.SetInt("LevelOneDiff", 1);
             PlayerPrefs.SetInt("LevelOneAttempts", Attempt.GetAttempts());

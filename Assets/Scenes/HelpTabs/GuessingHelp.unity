@@ -802,11 +802,11 @@ MonoBehaviour:
   m_text: 'Guessing
 
 
-    Guesses can be made by typing into the Terminal. If your
-    guess is correct, you will be shown the amount of points earned, Megash earned,
-    and total Megash. You will then be able to decide if you want to start another
-    game or quit. If your guess is wrong, you will be shown which letters were guessed
-    in the right place. You will also be shown the number of attempts remaining.'
+    Guesses can be made by pressing the letter buttons and
+    pressing submit. If your guess is correct, you will be shown the amount of points
+    earned, Megash earned, and total Megash. You will then be able to decide if you
+    want to start another game or quit. If your guess is wrong, you will be shown
+    which letters were guessed in the right place.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6e21189707796c4aa0a2943f2a4c539, type: 2}
   m_sharedMaterial: {fileID: 3236546305748627934, guid: f6e21189707796c4aa0a2943f2a4c539, type: 2}
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

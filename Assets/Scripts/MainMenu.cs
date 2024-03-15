@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
      */
     public void Start()
     {
-        UsedWords.loadList();
+        //UsedWords.loadList();
         megashText.text = Megash.getTotalCash().ToString();
     }
 
@@ -58,6 +58,7 @@ public class MainMenu : MonoBehaviour
      */
     public void ExitGame()
     {
+        WordSelection.saveList();
         Application.Quit();
     }
 

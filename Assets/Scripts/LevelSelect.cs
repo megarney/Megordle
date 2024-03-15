@@ -30,16 +30,20 @@ public class LevelSelect : MonoBehaviour
     public void Awake()
     {
 
-        int fiveAvailable = UsedWords.getFiveAvailable();
-        int eightAvailable = UsedWords.getEightAvailable();
-        int twelveAvailable = UsedWords.getTwelveAvailable();
+        int fiveAvail = PlayerPrefs.GetInt("FiveAvail");
+        int eightAvail = PlayerPrefs.GetInt("EightAvail");
+        int twelveAvail = PlayerPrefs.GetInt("TwelveAvail");
+
+        //int fiveAvailable = UsedWords.getFiveAvailable();
+        //int eightAvailable = UsedWords.getEightAvailable();
+        //int twelveAvailable = UsedWords.getTwelveAvailable();
 
         if (PlayerPrefs.GetInt("LevelOne") == 1)
         {
             levelOneText.text = "Continue";
             levelOneButton.onClick.AddListener(continueLevelOne);
         }
-        else if (fiveAvailable == 0)
+        else if (fiveAvail == 0)
         {
             outOfLevelOne();
         }
@@ -53,7 +57,7 @@ public class LevelSelect : MonoBehaviour
             levelTwoText.text = "Continue";
             levelTwoButton.onClick.AddListener(continueLevelTwo);
         }
-        else if (eightAvailable == 0)
+        else if (eightAvail == 0)
         {
             outOfLevelTwo();
         }
@@ -67,7 +71,7 @@ public class LevelSelect : MonoBehaviour
             levelThreeText.text = "Continue";
             levelThreeButton.onClick.AddListener(continueLevelThree);
         }
-        else if (twelveAvailable == 0)
+        else if (twelveAvail == 0)
         {
             outOfLevelThree();
         }
@@ -104,7 +108,7 @@ public class LevelSelect : MonoBehaviour
     public static void LevelOne()
     {
         Game.SetLevel(1);
-        SelectWord.SelectAnswer(1);
+        WordSelection.SelectAnswer(1);
         Attempt.SetAttempts();
         Game.SetWordle();
         SceneManager.LoadSceneAsync("Difficulty Select");
