@@ -37,7 +37,7 @@ public class Options : MonoBehaviour
         //UsedWords.reset();
         PlayerPrefs.DeleteAll();
 
-        PlayerPrefs.SetInt("Megash", 500);
+        PlayerPrefs.SetInt("Megash", 0);
 
         WordSelection.clearLists();
     }

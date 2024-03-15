@@ -150,7 +150,7 @@ public class LevelSelect : MonoBehaviour
     public static void LevelTwo()
     {
         Game.SetLevel(2);
-        SelectWord.SelectAnswer(2);
+        WordSelection.SelectAnswer(2);
         Attempt.SetAttempts();
         Game.SetWordle();
         SceneManager.LoadSceneAsync("Difficulty Select");
@@ -188,7 +188,7 @@ public class LevelSelect : MonoBehaviour
     public static void LevelThree()
     {
         Game.SetLevel(3);
-        SelectWord.SelectAnswer(3);
+        WordSelection.SelectAnswer(3);
         Attempt.SetAttempts();
         Game.SetWordle();
         SceneManager.LoadSceneAsync("Difficulty Select");

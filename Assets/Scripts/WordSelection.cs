@@ -22,6 +22,7 @@ public class WordSelection : MonoBehaviour
         //FIVE
         if (!PlayerPrefs.HasKey("FiveLetterList"))
         {
+            Debug.Log("Five A");
             PlayerPrefs.SetString("FiveLetterList", fiveLetterWords.text);
             string[] fiveWordList = PlayerPrefs.GetString("FiveLetterList").Split(',');
             foreach (string word in fiveWordList)
@@ -29,10 +30,10 @@ public class WordSelection : MonoBehaviour
                 fiveLetterList.Add(word);
             }
             PlayerPrefs.SetInt("FiveAvail", fiveLetterList.Count);
-            PlayerPrefs.SetInt("hasRun", 1);
         }
         else if(PlayerPrefs.GetInt("hasRun") == 0 && PlayerPrefs.GetInt("FiveAvail") != 0)
         {
+            Debug.Log("Five B");
             string[] fiveWordList = PlayerPrefs.GetString("FiveLetterList").Split(',');
             foreach (string word in fiveWordList)
             {
@@ -40,11 +41,11 @@ public class WordSelection : MonoBehaviour
             }
             fiveLetterList.RemoveAt(fiveLetterList.Count - 1); //removes blank
             PlayerPrefs.SetInt("FiveAvail", fiveLetterList.Count);
-            PlayerPrefs.SetInt("hasRun", 1);
         }
         //EIGHT
         if (!PlayerPrefs.HasKey("EightLetterList"))
         {
+            Debug.Log("Eight A");
             PlayerPrefs.SetString("EightLetterList", eightLetterWords.text);
             string[] eightWordList = PlayerPrefs.GetString("EightLetterList").Split(',');
             foreach (string word in eightWordList)
@@ -52,10 +53,10 @@ public class WordSelection : MonoBehaviour
                 eightLetterList.Add(word);
             }
             PlayerPrefs.SetInt("EightAvail", eightLetterList.Count);
-            PlayerPrefs.SetInt("hasRun", 1);
         }
         else if (PlayerPrefs.GetInt("hasRun") == 0 && PlayerPrefs.GetInt("EightAvail") != 0)
         {
+            Debug.Log("Eight B");
             string[] eightWordList = PlayerPrefs.GetString("EightLetterList").Split(',');
             foreach (string word in eightWordList)
             {
@@ -63,11 +64,11 @@ public class WordSelection : MonoBehaviour
             }
             eightLetterList.RemoveAt(eightLetterList.Count - 1); //removes blank
             PlayerPrefs.SetInt("EightAvail", eightLetterList.Count);
-            PlayerPrefs.SetInt("hasRun", 1);
         }
         //TWELVE
         if (!PlayerPrefs.HasKey("TwelveLetterList"))
         {
+            Debug.Log("Twelve A");
             PlayerPrefs.SetString("TwelveLetterList", twelveLetterWords.text);
             string[] twelveWordList = PlayerPrefs.GetString("TwelveLetterList").Split(',');
             foreach (string word in twelveWordList)
@@ -79,6 +80,7 @@ public class WordSelection : MonoBehaviour
         }
         else if (PlayerPrefs.GetInt("hasRun") == 0 && PlayerPrefs.GetInt("TwelveAvail") != 0)
         {
+            Debug.Log("Twelve B");
             string[] twelveWordList = PlayerPrefs.GetString("TwelveLetterList").Split(',');
             foreach (string word in twelveWordList)
             {
@@ -108,7 +110,6 @@ public class WordSelection : MonoBehaviour
             n = rand.Next(0, fiveLetterList.Count);
             answer = fiveLetterList[n];
             fiveLetterList.RemoveAt(n);
-            Debug.Log(fiveLetterList.Count);
             PlayerPrefs.SetInt("FiveAvail", fiveLetterList.Count);
         }
         else if(level == 2)
@@ -116,7 +117,6 @@ public class WordSelection : MonoBehaviour
             n = rand.Next(0, eightLetterList.Count);
             answer = eightLetterList[n];
             eightLetterList.RemoveAt(n);
-            Debug.Log(eightLetterList.Count);
             PlayerPrefs.SetInt("EightAvail", eightLetterList.Count);
         }
         else if(level == 3)
@@ -124,7 +124,6 @@ public class WordSelection : MonoBehaviour
             n = rand.Next(0, twelveLetterList.Count);
             answer = twelveLetterList[n];
             twelveLetterList.RemoveAt(n);
-            Debug.Log(twelveLetterList.Count);
             PlayerPrefs.SetInt("TwelveAvail", twelveLetterList.Count);
         }
         Game.SetAnswer(answer);
