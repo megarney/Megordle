@@ -375,6 +375,10 @@ public class Lev1Diff3 : MonoBehaviour
     {
         if (!filled.Equals("11111"))
         {
+            if (IncorrectText.enabled)
+            {
+                IncorrectText.enabled = false;
+            }
             UnfilledSlotsText.enabled = true;
             Invoke("DisableText", 3f);
         }
@@ -388,6 +392,10 @@ public class Lev1Diff3 : MonoBehaviour
             PreviousGuessesText.text += guess + "\n";
             failedAttempt();
             doWordle();
+            if (UnfilledSlotsText.enabled)
+            {
+                UnfilledSlotsText.enabled = false;
+            }
             IncorrectText.enabled = true;
             Invoke("DisableText", 3f);
         }

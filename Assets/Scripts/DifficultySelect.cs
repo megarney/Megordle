@@ -38,6 +38,16 @@ public class DifficultySelect : MonoBehaviour
         SceneManager.LoadSceneAsync("Help");
     }
 
+    public static void setUpGame()
+    {
+        WordSelection.SelectAnswer(Game.GetLevel());
+        Attempt.SetAttempts();
+        Game.SetWordle();
+        WordSelection.extraLetters(Game.GetDifficulty());
+        Game.Scramble();
+        Points.points();
+    }
+
     /*
      * Sets the difficulty in Game
      * Adds extra letters in SelectWord
@@ -48,9 +58,7 @@ public class DifficultySelect : MonoBehaviour
     public static void DifficultyOne()
     {
         Game.SetDifficulty(1);
-        WordSelection.extraLetters(1);
-        Game.Scramble();
-        Points.points();
+        setUpGame();
 
         int level = Game.GetLevel();
         if(level == 1)
@@ -73,9 +81,7 @@ public class DifficultySelect : MonoBehaviour
     public static void DifficultyTwo()
     {
         Game.SetDifficulty(2);
-        WordSelection.extraLetters(2);
-        Game.Scramble();
-        Points.points();
+        setUpGame();
 
         int level = Game.GetLevel();
         if (level == 1)
@@ -98,9 +104,7 @@ public class DifficultySelect : MonoBehaviour
     public static void DifficultyThree()
     {
         Game.SetDifficulty(3);
-        WordSelection.extraLetters(3);
-        Game.Scramble();
-        Points.points();
+        setUpGame();
 
         int level = Game.GetLevel();
         if (level == 1)

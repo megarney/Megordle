@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 /*
@@ -14,6 +16,15 @@ using UnityEngine.SceneManagement;
 
 public class Options : MonoBehaviour
 {
+
+    [SerializeField] private Image resetBackground;
+
+    [SerializeField] private TextMeshProUGUI areYourSure;
+    [SerializeField] private TextMeshProUGUI resetProgress;
+
+    [SerializeField] private Button noreset;
+    [SerializeField] private Button yesreset;
+
     /*
      * Method for the main menu button
      */
@@ -22,8 +33,27 @@ public class Options : MonoBehaviour
         SceneManager.LoadSceneAsync("Main Menu");
     }
 
+    public void attemptReset()
+    {
+        resetBackground.enabled = true;
+        areYourSure.enabled = true;
+        resetProgress.enabled = true;
+        noreset.gameObject.SetActive(true);
+        yesreset.gameObject.SetActive(true);
+    }
+
+    public void hideReset()
+    {
+        resetBackground.enabled = false;
+        areYourSure.enabled = false;
+        resetProgress.enabled = false;
+        noreset.gameObject.SetActive(false);
+        yesreset.gameObject.SetActive(false);
+    }
+
     public void Reset()
-    {soundEffectsBtn.image.sprite = soundEffectsOn;
+    {
+        soundEffectsBtn.image.sprite = soundEffectsOn;
 
         MusicBtn.image.sprite = MusicOn;
         if (PlayerPrefs.HasKey("MusicPref"))
@@ -52,6 +82,12 @@ public class Options : MonoBehaviour
      */
     private void Awake()
     {
+        resetBackground.enabled = false;
+        areYourSure.enabled = false;
+        resetProgress.enabled = false;
+        noreset.gameObject.SetActive(false);
+        yesreset.gameObject.SetActive(false);
+
         if (PlayerPrefs.HasKey("soundEffectsPref"))
         {
             if (PlayerPrefs.GetString("soundEffectsPref").Equals("On"))

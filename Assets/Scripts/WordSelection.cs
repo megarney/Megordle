@@ -22,7 +22,6 @@ public class WordSelection : MonoBehaviour
         //FIVE
         if (!PlayerPrefs.HasKey("FiveLetterList"))
         {
-            Debug.Log("Five A");
             PlayerPrefs.SetString("FiveLetterList", fiveLetterWords.text);
             string[] fiveWordList = PlayerPrefs.GetString("FiveLetterList").Split(',');
             foreach (string word in fiveWordList)
@@ -33,7 +32,6 @@ public class WordSelection : MonoBehaviour
         }
         else if(PlayerPrefs.GetInt("hasRun") == 0 && PlayerPrefs.GetInt("FiveAvail") != 0)
         {
-            Debug.Log("Five B");
             string[] fiveWordList = PlayerPrefs.GetString("FiveLetterList").Split(',');
             foreach (string word in fiveWordList)
             {
@@ -45,7 +43,6 @@ public class WordSelection : MonoBehaviour
         //EIGHT
         if (!PlayerPrefs.HasKey("EightLetterList"))
         {
-            Debug.Log("Eight A");
             PlayerPrefs.SetString("EightLetterList", eightLetterWords.text);
             string[] eightWordList = PlayerPrefs.GetString("EightLetterList").Split(',');
             foreach (string word in eightWordList)
@@ -56,7 +53,6 @@ public class WordSelection : MonoBehaviour
         }
         else if (PlayerPrefs.GetInt("hasRun") == 0 && PlayerPrefs.GetInt("EightAvail") != 0)
         {
-            Debug.Log("Eight B");
             string[] eightWordList = PlayerPrefs.GetString("EightLetterList").Split(',');
             foreach (string word in eightWordList)
             {
@@ -68,7 +64,6 @@ public class WordSelection : MonoBehaviour
         //TWELVE
         if (!PlayerPrefs.HasKey("TwelveLetterList"))
         {
-            Debug.Log("Twelve A");
             PlayerPrefs.SetString("TwelveLetterList", twelveLetterWords.text);
             string[] twelveWordList = PlayerPrefs.GetString("TwelveLetterList").Split(',');
             foreach (string word in twelveWordList)
@@ -76,11 +71,9 @@ public class WordSelection : MonoBehaviour
                 twelveLetterList.Add(word);
             }
             PlayerPrefs.SetInt("TwelveAvail", twelveLetterList.Count);
-            PlayerPrefs.SetInt("hasRun", 1);
         }
         else if (PlayerPrefs.GetInt("hasRun") == 0 && PlayerPrefs.GetInt("TwelveAvail") != 0)
         {
-            Debug.Log("Twelve B");
             string[] twelveWordList = PlayerPrefs.GetString("TwelveLetterList").Split(',');
             foreach (string word in twelveWordList)
             {
@@ -88,6 +81,10 @@ public class WordSelection : MonoBehaviour
             }
             twelveLetterList.RemoveAt(twelveLetterList.Count - 1); //removes blank
             PlayerPrefs.SetInt("TwelveAvail", twelveLetterList.Count);
+        }
+        //hasRun bool
+        if(PlayerPrefs.GetInt("hasRun") == 0)
+        {
             PlayerPrefs.SetInt("hasRun", 1);
         }
     }
