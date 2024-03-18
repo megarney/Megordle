@@ -59,6 +59,8 @@ public class Lev1Diff1 : MonoBehaviour
     [SerializeField] private Button hintBtn;
     [SerializeField] private Button autoWinBtn;
 
+    [SerializeField] private Image notRightWord;
+
     /*
      * Method for the help button
      */
@@ -116,6 +118,7 @@ public class Lev1Diff1 : MonoBehaviour
         scrambled = Game.GetScrambled();
         IncorrectText.enabled = false;
         UnfilledSlotsText.enabled = false;
+        notRightWord.enabled = false;
         filled = "00000";
         guess = "_____";
         wordle = "_____";
@@ -372,15 +375,25 @@ public class Lev1Diff1 : MonoBehaviour
         }
         else
         {
+            if (CheckIfWord.checkIfWord(guess))
+            {
+                notRightWord.enabled = true;
+                Invoke("DisableText", 3f);
+            }
+            else
+            {
+                if (UnfilledSlotsText.enabled)
+                {
+                    UnfilledSlotsText.enabled = false;
+                    Invoke("DisableText", 3f);
+                }
+                IncorrectText.enabled = true;
+                Invoke("DisableText", 3f);
+            }
             PreviousGuessesText.text += guess + "\n";
             failedAttempt();
             doWordle();
-            if (UnfilledSlotsText.enabled)
-            {
-                UnfilledSlotsText.enabled = false;
-            }
-            IncorrectText.enabled = true;
-            Invoke("DisableText", 3f);
+            
         }
     }
 
@@ -388,6 +401,7 @@ public class Lev1Diff1 : MonoBehaviour
     {
         IncorrectText.enabled = false;
         UnfilledSlotsText.enabled = false;
+        notRightWord.enabled = false;
     }
 
     /*

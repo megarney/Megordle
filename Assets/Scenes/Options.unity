@@ -188,7 +188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You will loose all of your progress and all settings will be reset
+  m_text: You will lose all of your progress and all settings will be reset
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6e21189707796c4aa0a2943f2a4c539, type: 2}
   m_sharedMaterial: {fileID: 3236546305748627934, guid: f6e21189707796c4aa0a2943f2a4c539, type: 2}
