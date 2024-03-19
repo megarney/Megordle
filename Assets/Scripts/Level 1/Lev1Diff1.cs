@@ -365,6 +365,11 @@ public class Lev1Diff1 : MonoBehaviour
             {
                 IncorrectText.enabled = false;
             }
+            if (notRightWord.enabled)
+            {
+                notRightWord.enabled = false;
+                Invoke("DisableText", 3f);
+            }
             UnfilledSlotsText.enabled = true;
             Invoke("DisableText", 3f);
         }
@@ -373,27 +378,38 @@ public class Lev1Diff1 : MonoBehaviour
             Streak.increaseStreak();
             SceneManager.LoadSceneAsync("Correct");
         }
+        else if (CheckIfWord.checkIfWord(guess))
+        {
+            if (UnfilledSlotsText.enabled)
+            {
+                UnfilledSlotsText.enabled = false;
+                Invoke("DisableText", 3f);
+            }
+            if (IncorrectText.enabled)
+            {
+                IncorrectText.enabled = false;
+            }
+            notRightWord.enabled = true;
+            Invoke("DisableText", 3f);
+            doWordle();
+        }
         else
         {
-            if (CheckIfWord.checkIfWord(guess))
-            {
-                notRightWord.enabled = true;
-                Invoke("DisableText", 3f);
-            }
-            else
-            {
-                if (UnfilledSlotsText.enabled)
-                {
-                    UnfilledSlotsText.enabled = false;
-                    Invoke("DisableText", 3f);
-                }
-                IncorrectText.enabled = true;
-                Invoke("DisableText", 3f);
-            }
             PreviousGuessesText.text += guess + "\n";
             failedAttempt();
             doWordle();
-            
+            if (UnfilledSlotsText.enabled)
+            {
+                UnfilledSlotsText.enabled = false;
+                Invoke("DisableText", 3f);
+            }
+            if (notRightWord.enabled)
+            {
+                notRightWord.enabled = false;
+                Invoke("DisableText", 3f);
+            }
+            IncorrectText.enabled = true;
+            Invoke("DisableText", 3f);
         }
     }
 
