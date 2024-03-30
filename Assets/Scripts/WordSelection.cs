@@ -16,10 +16,14 @@ public class WordSelection : MonoBehaviour
     private static List<string> eightLetterList = new List<string>();
     private static List<string> twelveLetterList = new List<string>();
 
+    private static List<string> fiveLetterFail = new List<string>();
+    private static List<string> eightLetterFail = new List<string>();
+    private static List<string> twelveLetterFail = new List<string>();
+
     // Start is called before the first frame update
     void Awake()
     {
-        //FIVE
+        //FIVE AVAIL
         if (!PlayerPrefs.HasKey("FiveLetterList"))
         {
             PlayerPrefs.SetString("FiveLetterList", fiveLetterWords.text);
@@ -40,7 +44,7 @@ public class WordSelection : MonoBehaviour
             fiveLetterList.RemoveAt(fiveLetterList.Count - 1); //removes blank
             PlayerPrefs.SetInt("FiveAvail", fiveLetterList.Count);
         }
-        //EIGHT
+        //EIGHT AVAIL
         if (!PlayerPrefs.HasKey("EightLetterList"))
         {
             PlayerPrefs.SetString("EightLetterList", eightLetterWords.text);
@@ -61,7 +65,7 @@ public class WordSelection : MonoBehaviour
             eightLetterList.RemoveAt(eightLetterList.Count - 1); //removes blank
             PlayerPrefs.SetInt("EightAvail", eightLetterList.Count);
         }
-        //TWELVE
+        //TWELVE AVAIL
         if (!PlayerPrefs.HasKey("TwelveLetterList"))
         {
             PlayerPrefs.SetString("TwelveLetterList", twelveLetterWords.text);
@@ -82,11 +86,45 @@ public class WordSelection : MonoBehaviour
             twelveLetterList.RemoveAt(twelveLetterList.Count - 1); //removes blank
             PlayerPrefs.SetInt("TwelveAvail", twelveLetterList.Count);
         }
+        //FIVE FAIL
+        if (PlayerPrefs.GetInt("hasRun") == 0 && PlayerPrefs.GetInt("FiveFail") != 0)
+        {
+            string[] fiveWordFail = PlayerPrefs.GetString("FiveLetterFail").Split(',');
+            foreach (string word in fiveWordFail)
+            {
+                fiveLetterFail.Add(word);
+            }
+            fiveLetterFail.RemoveAt(fiveLetterFail.Count - 1); //removes blank
+            PlayerPrefs.SetInt("FiveFail", fiveLetterFail.Count);
+        }
+        //EIGHT FAIL
+        if (PlayerPrefs.GetInt("hasRun") == 0 && PlayerPrefs.GetInt("EightFail") != 0)
+        {
+            string[] eightWordFail = PlayerPrefs.GetString("EightLetterFail").Split(',');
+            foreach (string word in eightWordFail)
+            {
+                eightLetterFail.Add(word);
+            }
+            eightLetterFail.RemoveAt(eightLetterFail.Count - 1); //removes blank
+            PlayerPrefs.SetInt("EightFail", eightLetterFail.Count);
+        }
+        //Twelve FAIL
+        if (PlayerPrefs.GetInt("hasRun") == 0 && PlayerPrefs.GetInt("TwelveFail") != 0)
+        {
+            string[] twelveWordFail = PlayerPrefs.GetString("TwelveLetterFail").Split(',');
+            foreach (string word in twelveWordFail)
+            {
+                twelveLetterFail.Add(word);
+            }
+            twelveLetterFail.RemoveAt(twelveLetterFail.Count - 1); //removes blank
+            PlayerPrefs.SetInt("TwelveFail", twelveLetterFail.Count);
+        }
         //hasRun bool
-        if(PlayerPrefs.GetInt("hasRun") == 0)
+        if (PlayerPrefs.GetInt("hasRun") == 0)
         {
             PlayerPrefs.SetInt("hasRun", 1);
         }
+
     }
 
     public static void clearLists()
@@ -98,6 +136,7 @@ public class WordSelection : MonoBehaviour
 
     public static void SelectAnswer(int level)
     {
+
         string answer = "";
 
         var rand = new System.Random();
@@ -106,24 +145,90 @@ public class WordSelection : MonoBehaviour
         {
             n = rand.Next(0, fiveLetterList.Count);
             answer = fiveLetterList[n];
-            fiveLetterList.RemoveAt(n);
-            PlayerPrefs.SetInt("FiveAvail", fiveLetterList.Count);
         }
         else if(level == 2)
         {
             n = rand.Next(0, eightLetterList.Count);
             answer = eightLetterList[n];
-            eightLetterList.RemoveAt(n);
-            PlayerPrefs.SetInt("EightAvail", eightLetterList.Count);
         }
         else if(level == 3)
         {
             n = rand.Next(0, twelveLetterList.Count);
             answer = twelveLetterList[n];
-            twelveLetterList.RemoveAt(n);
-            PlayerPrefs.SetInt("TwelveAvail", twelveLetterList.Count);
         }
         Game.SetAnswer(answer);
+    }
+
+    public static void removeWord(string word)
+    {
+        if(word.Length == 5)
+        {
+            fiveLetterList.RemoveAt(fiveLetterList.IndexOf(word));
+            PlayerPrefs.SetInt("FiveAvail", fiveLetterList.Count);
+        }
+        else if (word.Length == 8)
+        {
+            eightLetterList.RemoveAt(eightLetterList.IndexOf(word));
+            PlayerPrefs.SetInt("EightAvail", eightLetterList.Count);
+        }
+        else if (word.Length == 12)
+        {
+            twelveLetterList.RemoveAt(twelveLetterList.IndexOf(word));
+            PlayerPrefs.SetInt("TwelveAvail", twelveLetterList.Count);
+        }
+    }
+
+    public static void fail(string word)
+    {
+        if (word.Length == 5)
+        {
+            fiveLetterFail.Add(word);
+            PlayerPrefs.SetInt("FiveFail", fiveLetterFail.Count);
+        }
+        else if (word.Length == 8)
+        {
+            eightLetterFail.Add(word);
+            PlayerPrefs.SetInt("EightFail", eightLetterFail.Count);
+        }
+        else if (word.Length == 12)
+        {
+            twelveLetterFail.Add(word);
+            PlayerPrefs.SetInt("TwelveFail", twelveLetterFail.Count);
+        }
+    }
+
+    public static void resetWord()
+    {
+        if(PlayerPrefs.GetInt("FiveAvail") == 0 && PlayerPrefs.GetInt("FiveFail") != 0)
+        {
+            fiveLetterList.Clear();
+            foreach (string word in fiveLetterFail)
+            {
+                fiveLetterList.Add(word);
+            }
+            fiveLetterFail.Clear();
+            PlayerPrefs.SetInt("FiveAvail", fiveLetterList.Count);
+        }
+        if (PlayerPrefs.GetInt("EightAvail") == 0 && PlayerPrefs.GetInt("EightFail") != 0)
+        {
+            eightLetterList.Clear();
+            foreach (string word in eightLetterFail)
+            {
+                eightLetterList.Add(word);
+            }
+            eightLetterFail.Clear();
+            PlayerPrefs.SetInt("EightAvail", eightLetterList.Count);
+        }
+        if (PlayerPrefs.GetInt("TwelveAvail") == 0 && PlayerPrefs.GetInt("TwelveFail") != 0)
+        {
+            twelveLetterList.Clear();
+            foreach (string word in twelveLetterFail)
+            {
+                twelveLetterList.Add(word);
+            }
+            twelveLetterFail.Clear();
+            PlayerPrefs.SetInt("TwelveAvail", twelveLetterList.Count);
+        }
     }
 
     /*
@@ -160,7 +265,7 @@ public class WordSelection : MonoBehaviour
 
     public static void saveList()
     {
-        //FIVE
+        //FIVE AVAIL
         string fiveSaved = "";
         foreach (string word in fiveLetterList)
         {
@@ -170,8 +275,7 @@ public class WordSelection : MonoBehaviour
             }
         }
         PlayerPrefs.SetString("FiveLetterList", fiveSaved);
-        PlayerPrefs.SetInt("hasRun", 0);
-        //EIGHT
+        //EIGHT AVAIL
         string eightSaved = "";
         foreach (string word in eightLetterList)
         {
@@ -181,8 +285,7 @@ public class WordSelection : MonoBehaviour
             }
         }
         PlayerPrefs.SetString("EightLetterList", eightSaved);
-        PlayerPrefs.SetInt("hasRun", 0);
-        //TWELVE
+        //TWELVE AVAIL
         string twelveSaved = "";
         foreach (string word in twelveLetterList)
         {
@@ -192,6 +295,36 @@ public class WordSelection : MonoBehaviour
             }
         }
         PlayerPrefs.SetString("TwelveLetterList", twelveSaved);
+        //FIVE FAIL
+        string fiveFail = "";
+        foreach(string word in fiveLetterFail)
+        {
+            if(word != "")
+            {
+                fiveFail += word + ",";
+            }
+        }
+        PlayerPrefs.SetString("FiveLetterFail", fiveFail);
+        //EIGHT FAIL
+        string eightFail = "";
+        foreach (string word in eightLetterFail)
+        {
+            if (word != "")
+            {
+                eightFail += word + ",";
+            }
+        }
+        PlayerPrefs.SetString("EightLetterFail", eightFail);
+        //TWELVE FAIL
+        string twelveFail = "";
+        foreach (string word in twelveLetterFail)
+        {
+            if (word != "")
+            {
+                twelveFail += word + ",";
+            }
+        }
+        PlayerPrefs.SetString("TwelveLetterFail", twelveFail);
         PlayerPrefs.SetInt("hasRun", 0);
     }
 }

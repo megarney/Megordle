@@ -22,6 +22,22 @@ public class CheckIfWord : MonoBehaviour
                 fiveLetterList.Add(word.ToLower());
             }
         }
+        if (eightLetterList.Count == 0)
+        {
+            string[] eightWordList = (eightLetterWords.text).Split(',');
+            foreach (string word in eightWordList)
+            {
+                eightLetterList.Add(word.ToLower());
+            }
+        }
+        if (twelveLetterList.Count == 0)
+        {
+            string[] twelveWordList = (twelveLetterWords.text).Split(',');
+            foreach (string word in twelveWordList)
+            {
+                twelveLetterList.Add(word.ToLower());
+            }
+        }
     }
 
     public static bool checkIfWord(string word)
@@ -29,6 +45,28 @@ public class CheckIfWord : MonoBehaviour
         if(word.Length == 5)
         {
             if (fiveLetterList.Contains(word))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if(word.Length == 8)
+        {
+            if (eightLetterList.Contains(word))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (word.Length == 12)
+        {
+            if (twelveLetterList.Contains(word))
             {
                 return true;
             }

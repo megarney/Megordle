@@ -27,6 +27,9 @@ public class Correct : MonoBehaviour
     */
     void Start()
     {
+        WordSelection.removeWord(Game.GetAnswer());
+        WordSelection.resetWord();
+
         Megash.calculateCash();
         
         pointsEarnedText.text = Points.getPoints().ToString();

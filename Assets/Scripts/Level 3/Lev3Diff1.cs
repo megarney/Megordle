@@ -74,6 +74,8 @@ public class Lev3Diff1 : MonoBehaviour
     [SerializeField] private Button hintBtn;
     [SerializeField] private Button autoWinBtn;
 
+    [SerializeField] private Image notRightWord;
+
     /*
      * Method for the help button
      */
@@ -128,6 +130,7 @@ public class Lev3Diff1 : MonoBehaviour
         scrambled = Game.GetScrambled();
         IncorrectText.enabled = false;
         UnfilledSlotsText.enabled = false;
+        notRightWord.enabled = false;
         filled = "000000000000";
         guess = "____________";
         wordle = "____________";
@@ -529,6 +532,7 @@ public class Lev3Diff1 : MonoBehaviour
      *      calls failedAttempt()
      *      calls doWordle()
      *      displays 'Incorrect. Try again!' to the user for 3 seconds
+     *      111111111111
      */
     public void GuessBtnOnclick()
     {
@@ -538,6 +542,11 @@ public class Lev3Diff1 : MonoBehaviour
             {
                 IncorrectText.enabled = false;
             }
+            if (notRightWord.enabled)
+            {
+                notRightWord.enabled = false;
+                Invoke("DisableText", 3f);
+            }
             UnfilledSlotsText.enabled = true;
             Invoke("DisableText", 3f);
         }
@@ -545,6 +554,21 @@ public class Lev3Diff1 : MonoBehaviour
         {
             Streak.increaseStreak();
             SceneManager.LoadSceneAsync("Correct");
+        }
+        else if (CheckIfWord.checkIfWord(guess))
+        {
+            if (UnfilledSlotsText.enabled)
+            {
+                UnfilledSlotsText.enabled = false;
+                Invoke("DisableText", 3f);
+            }
+            if (IncorrectText.enabled)
+            {
+                IncorrectText.enabled = false;
+            }
+            notRightWord.enabled = true;
+            Invoke("DisableText", 3f);
+            doWordle();
         }
         else
         {
@@ -554,6 +578,12 @@ public class Lev3Diff1 : MonoBehaviour
             if (UnfilledSlotsText.enabled)
             {
                 UnfilledSlotsText.enabled = false;
+                Invoke("DisableText", 3f);
+            }
+            if (notRightWord.enabled)
+            {
+                notRightWord.enabled = false;
+                Invoke("DisableText", 3f);
             }
             IncorrectText.enabled = true;
             Invoke("DisableText", 3f);
@@ -564,6 +594,7 @@ public class Lev3Diff1 : MonoBehaviour
     {
         IncorrectText.enabled = false;
         UnfilledSlotsText.enabled = false;
+        notRightWord.enabled = false;
     }
 
     /*

@@ -62,6 +62,8 @@ public class Lev2Diff2 : MonoBehaviour
     [SerializeField] private Button hintBtn;
     [SerializeField] private Button autoWinBtn;
 
+    [SerializeField] private Image notRightWord;
+
     /*
      * Method for the help button
      */
@@ -116,6 +118,7 @@ public class Lev2Diff2 : MonoBehaviour
         scrambled = Game.GetScrambled();
         IncorrectText.enabled = false;
         UnfilledSlotsText.enabled = false;
+        notRightWord.enabled = false;
         filled = "00000000";
         guess = "________";
         wordle = "________";
@@ -445,6 +448,11 @@ public class Lev2Diff2 : MonoBehaviour
             {
                 IncorrectText.enabled = false;
             }
+            if (notRightWord.enabled)
+            {
+                notRightWord.enabled = false;
+                Invoke("DisableText", 3f);
+            }
             UnfilledSlotsText.enabled = true;
             Invoke("DisableText", 3f);
         }
@@ -452,6 +460,21 @@ public class Lev2Diff2 : MonoBehaviour
         {
             Streak.increaseStreak();
             SceneManager.LoadSceneAsync("Correct");
+        }
+        else if (CheckIfWord.checkIfWord(guess))
+        {
+            if (UnfilledSlotsText.enabled)
+            {
+                UnfilledSlotsText.enabled = false;
+                Invoke("DisableText", 3f);
+            }
+            if (IncorrectText.enabled)
+            {
+                IncorrectText.enabled = false;
+            }
+            notRightWord.enabled = true;
+            Invoke("DisableText", 3f);
+            doWordle();
         }
         else
         {
@@ -461,6 +484,12 @@ public class Lev2Diff2 : MonoBehaviour
             if (UnfilledSlotsText.enabled)
             {
                 UnfilledSlotsText.enabled = false;
+                Invoke("DisableText", 3f);
+            }
+            if (notRightWord.enabled)
+            {
+                notRightWord.enabled = false;
+                Invoke("DisableText", 3f);
             }
             IncorrectText.enabled = true;
             Invoke("DisableText", 3f);
@@ -471,6 +500,7 @@ public class Lev2Diff2 : MonoBehaviour
     {
         IncorrectText.enabled = false;
         UnfilledSlotsText.enabled = false;
+        notRightWord.enabled = false;
     }
 
     /*

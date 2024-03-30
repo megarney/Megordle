@@ -38,6 +38,10 @@ public class Fail : MonoBehaviour
         {
             PlayerPrefs.SetInt("LevelThree", 0);
         }
+
+        WordSelection.removeWord(Game.GetAnswer());
+        WordSelection.fail(Game.GetAnswer());
+        WordSelection.resetWord();
     }
 
     /*
